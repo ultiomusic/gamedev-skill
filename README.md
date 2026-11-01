@@ -39,3 +39,11 @@ Skill önce gerçek sahneyi, input/state/simulation zincirini ve mevcut testleri
 sonra küçük bir davranış sözleşmesiyle ilerler. Ekran sarsıntısı eklemeyi otomatik
 olarak iyileşme saymaz, derlenen kodu oynanış testi diye sunmaz ve ölçüm olmadan
 performans artışı iddia etmez.
+
+## Doğrulama
+
+[Test kaydı](tests/README.md) ve [WalkingCity'deki 34 kavramın değerlendirmesi](tests/walkingcity-coverage.md)
+repo içinde. Codex yüklemesi gerçek araçla, skill davranışı bağımsız değerlendirmelerle
+ve Unity EditMode testleriyle sınandı; üç somut gameplay/feedback hatası yeniden üretildi.
+Claude uyumluluğu belge/biçim düzeyinde doğrulandı; Claude çalışma oturumu yürütülmedi.
+WalkingCity kaynakları kalıcı değiştirilmedi ve oyun reposuna commit atılmadı.

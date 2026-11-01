@@ -9,7 +9,7 @@ Make the player's intended action responsive, readable, and consistent at the ta
 
 ## Establish the smallest useful target
 
-1. Read project instructions and inspect the current diff before editing. Identify the actual engine/version, render pipeline, entry scene, input system, platform, and existing verification tools from executable configuration and assets. Treat stale templates as claims to verify.
+1. Read project instructions and inspect the current diff before editing. Identify the actual engine/version, render pipeline, entry scene, input system, platform, and existing verification tools from executable configuration and assets. Treat stale templates as claims to verify. For snippet- or symptom-only requests, give conditional guidance from the supplied evidence rather than inventing project context or execution.
 2. Describe one player-visible problem and its reproduction: action, expected response, observed response, and conditions. For a new feature, establish that contract before implementation. An audit stays read-only unless changes are requested.
 3. Choose the highest-impact cause: lost or duplicated input, broken rules/timing, unreadable feedback, then measured cost. Trace input → state transition → simulation → presentation before adding polish.
 4. Set a small acceptance check appropriate to the game: one tap produces one purchase, an action survives a brief lockout, camera never hides the target, or worst-case frame time stays within budget. Record baseline evidence and assumptions.
@@ -32,6 +32,7 @@ For Unity, also read [Unity integration](references/unity.md). For another engin
 - Separate gameplay truth from presentation. Visual recoil, shake, squash, or interpolation must not silently change colliders, targeting, economy, or saved state.
 - Track units and clock domains: rates integrate once, displacement and engine-integrated velocity do not. Distinguish scaled simulation, unscaled UI/feedback, and real elapsed time used by persistence.
 - Sample input edges in the input lifecycle and consume each action once at a valid transition; define expiry, cancellation, UI capture, and pause/focus behavior. Do not buffer purchases or destructive actions without a design reason.
+- Revalidate delayed actions at completion; consume or remove resources only after authoritative success, with explicit reservation, remainder, or refund behavior when conditions change during the delay.
 - Give temporary effects explicit ownership and cleanup on completion, interruption, disable, scene change, and reuse. Restore the previous state rather than a guessed default.
 - Keep tuning values named, bounded, and expressed in seconds or world units. Example values are starting hypotheses, not universal constants; compare feel before/after under identical conditions.
 - Reuse engine features and existing assets. Add dependencies or abstractions only when a demonstrated need outweighs their cost; avoid unrelated refactors and speculative optimization.
@@ -45,7 +46,7 @@ For Unity, also read [Unity integration](references/unity.md). For another engin
 4. Use isolated tests or temporary fixtures when necessary; protect existing work and player saves, and remove only artifacts you created. Inspect harness arguments before running reset, auto-play, soak, or capture modes. Do not claim an old binary verifies new source.
 5. Report observed results separately from code inferences and untested feel. If execution is blocked, name the blocker and provide the exact remaining check; do not turn a static review into a playtest claim.
 
-Stop when the agreed behavior works, relevant regressions pass, and the change remains small. If a technique is irrelevant, record why instead of expanding scope. If a test fails, fix the demonstrated cause and rerun the affected check.
+Stop when the agreed behavior works, relevant regressions pass, and the change remains small. If a technique is irrelevant, record why instead of expanding scope. During authorized implementation, fix demonstrated regressions and rerun the affected check; during read-only audits, report failures and proposed fixes, separating pre-existing failures from regressions without repairing unrelated code.
 
 ## Handoff
 

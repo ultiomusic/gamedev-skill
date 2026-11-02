@@ -31,7 +31,13 @@ Evidence, relative to `Assets/WalkingCity/`: `Generated/WalkingCityConfig.asset:
 
 Its single proposed experiment preserves prices, rules and pacing while comparing the existing UI with an external paper card showing city-level consequences. It asks players to predict the population limit and their next decision before explaining the rule. Separate fresh groups avoid teaching A's participants the answer before B. Failure to improve understanding rejects the information hypothesis; extra clicks or different selections alone are not success.
 
-The experiment was **designed, not conducted**; the hypothesis that information is causing dissatisfaction remains unproven. No game or Unity process was launched for this revision. This evaluation prompted the explicit learning/order-effect caveat in the skill, not a new UI requirement for every game.
+The experiment was **designed, not conducted**; the hypothesis that information is causing dissatisfaction remains unproven. No game or Unity process was launched during this design evaluation. This evaluation prompted the explicit learning/order-effect caveat in the skill, not a new UI requirement for every game.
+
+## Follow-up live Unity session: incomplete
+
+The revised skill (`9331fd6`) was subsequently tried in the visible Unity `6000.3.26f1` Editor using an isolated copy of the same WalkingCity source. Gameplay files were identical; only the copy's company/product identity changed to isolate PlayerPrefs. Normal mouse input reached the main menu, completed onboarding, showed the first generator objective, and initiated a supply-crate pickup. The pickup's final resource settlement was not observed.
+
+The user stopped computer control with the physical Escape key before construction, upgrades, or the planned comparisons were completed. Screenshots captured the menu, onboarding, an unexpected pause, and the first objective; the pause's cause was not established. This partial session establishes that the game was opened and interacted with, but does not establish improved feel or a completed playable-loop test. No skill behavior change is attributed to it, and the original Unity repository received no changes or commits.
 
 ## Earlier Unity execution, preserved as historical evidence
 
@@ -45,4 +51,4 @@ The first edition (`dbc88ef`) was tested against WalkingCity source HEAD `fa8bbf
 
 Three additional failures reproduced a misplaced merchant marker, interrupted building placement and a zero-payout pickup being discarded; three isolated correction prototypes passed. The original two failures involved coplanar geometry. No correction was integrated into game source, and the temporary fixture and metadata were removed. Those findings inform the skill's ownership, interruption and delayed-settlement rules, but do not establish the revised design exercises' effectiveness.
 
-No rendered playtest, phone profiling, or Claude runtime session was performed. Read-only design analysis and synthetic experiments must not be represented as completed in-game improvements. WalkingCity source and HEAD remain unchanged, with its original untracked files preserved; no game commit was made.
+These historical engine runs did not include rendered playtesting. Phone profiling and Claude runtime execution remain untested. Read-only design analysis, synthetic experiments, and the incomplete live session must not be represented as completed in-game improvements. WalkingCity source and HEAD remain unchanged, with its original untracked files preserved; no game commit was made.

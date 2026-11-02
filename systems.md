@@ -38,7 +38,7 @@ Treat these values as hypotheses to test against this game's rules and content, 
 | Concept | Start here | Trap to check |
 | --- | --- | --- |
 | Fixed timestep | Step 1/60 s from an accumulator capped near 0.25 s; render lerp(prev, cur, acc/step). | Raw frame-time steps add energy on long frames; no catch-up cap spirals; a fixed step alone is not cross-machine determinism. |
-| Tunneling | Sweep last to next position, or substep so a step moves under half the object's size; CCD for fast bodies. | Higher render FPS changes nothing; physics samples at its own rate. Pick sweep, substeps, or CCD by speed and size. |
+| Tunneling | Sweep last to next position, or substep so a step moves under half the object's size; CCD for fast bodies. | Raising render FPS is not a fix: a fixed physics step ignores it, and per-frame physics (Unreal's default) tunnels worst at the lowest frame rate. Pick sweep, substeps, or CCD by speed and size. |
 | State machine | One active state; explicit (state, event) to next table; enter/update/exit; unknown events ignored. | Transitions hidden in boolean flags; movement x weapon in one machine explodes, so split or nest machines. |
 | Hitbox and hurtbox | Hitbox live only on active frames, tested against hurtboxes; each attack instance records targets hit, one hit per target per swing. | Hit set cleared every frame, so clear it per swing; sprite bounds as combat shapes; per-swing tracking tangled with the defender's i-frames. |
 | Object pooling | Preallocate the peak count; reset every field on acquire; warn on exhaustion; when full, reject, recycle oldest, or grow off the hot path. | Incomplete reset leaks timers, targets, or listeners; active pooled objects still cost update and draw. |
@@ -46,6 +46,7 @@ Treat these values as hypotheses to test against this game's rules and content, 
 | Pathfinding (A*) | f = g + h, admissible h: Manhattan for 4-way, octile for 8-way; binary-heap open set; no corner cutting. | Overestimating h loses the shortest path; h must match the movement set (not Manhattan with 8-way). |
 | Steering behaviors | steer = clamp(desired - velocity, maxForce), maxForce about 4x maxSpeed per second; arrive radius about 4 unit widths; separate within about 2. | No arrive slowdown, so agents overshoot and pile up; steering alone gets trapped by obstacles, so follow a routed path. |
 | Seeded noise | Seeded PRNG into coordinate-sampled noise; 3-5 octaves, frequency x2 and amplitude x0.5 each; seed stored in the save. | One extra call on a shared sequential stream shifts the world; an algorithm change between versions makes old saves differ, so version the generator. |
+| Save data | A version field with step-by-step migrations; save settled state only, never in-flight animations or pending payouts; write and flush (fsync) a temp file, then atomically rename it over the old one or use the platform's atomic writer; cap offline progress and clamp negative elapsed time. | Saving mid-transaction duplicates or loses rewards; no version field breaks old saves; a crash or power loss during a direct overwrite corrupts the only copy. |
 
 ## Run a discriminating experiment
 

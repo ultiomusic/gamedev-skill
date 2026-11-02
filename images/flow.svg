@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="256" viewBox="0 0 880 256" role="img" aria-label="How it works: you ask, it turns the request into a playable promise, takes a direct fix for one concept or runs specialists for mixed work, makes the smallest change in your code and reports what was verified">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141a28"/><stop offset="1" stop-color="#0a0c12"/></linearGradient>
+<radialGradient id="halo" gradientUnits="userSpaceOnUse" cx="440" cy="0" r="520"><stop offset="0" stop-color="#a78bfa" stop-opacity=".17"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="#fff" fill-opacity=".05"/></pattern>
+<filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="880" height="256"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="plat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f2637"/><stop offset="1" stop-color="#11151f"/></linearGradient>
+
+</defs>
+<style>.s{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}.m{font-family:SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace}.fb{transform-box:fill-box;transform-origin:50% 50%}.fbb{transform-box:fill-box;transform-origin:50% 100%}.fbl{transform-box:fill-box;transform-origin:0 50%}@keyframes blink{0%{fill-opacity:1}50%{fill-opacity:0}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}@keyframes pm{0.00%{stroke-dashoffset:18}4.84%{stroke-dashoffset:18}46.77%{stroke-dashoffset:-680}100.00%{stroke-dashoffset:-680}}@keyframes pb{0.00%{stroke-dashoffset:18}53.23%{stroke-dashoffset:18}95.16%{stroke-dashoffset:-757.3}100.00%{stroke-dashoffset:-757.3}}@keyframes n0{0.00%{opacity:0}4.19%{opacity:0}5.16%{opacity:1}12.90%{opacity:0}52.58%{opacity:0}53.55%{opacity:1}61.29%{opacity:0}100.00%{opacity:0}}@keyframes r0{0.00%{opacity:0;transform:scale(1)}4.19%{opacity:0;transform:scale(1)}5.16%{opacity:.7;transform:scale(1)}13.71%{opacity:0;transform:scale(1.55)}52.58%{opacity:0;transform:scale(1)}53.55%{opacity:.7;transform:scale(1)}62.10%{opacity:0;transform:scale(1.55)}100.00%{opacity:0;transform:scale(1.55)}}@keyframes n1{0.00%{opacity:0}13.69%{opacity:0}14.65%{opacity:1}22.40%{opacity:0}61.13%{opacity:0}62.09%{opacity:1}69.84%{opacity:0}100.00%{opacity:0}}@keyframes r1{0.00%{opacity:0;transform:scale(1)}13.69%{opacity:0;transform:scale(1)}14.65%{opacity:.7;transform:scale(1)}23.20%{opacity:0;transform:scale(1.55)}61.13%{opacity:0;transform:scale(1)}62.09%{opacity:.7;transform:scale(1)}70.64%{opacity:0;transform:scale(1.55)}100.00%{opacity:0;transform:scale(1.55)}}@keyframes n2{0.00%{opacity:0}24.62%{opacity:0}25.59%{opacity:1}33.33%{opacity:0}100.00%{opacity:0}}@keyframes r2{0.00%{opacity:0;transform:scale(1)}24.62%{opacity:0;transform:scale(1)}25.59%{opacity:.7;transform:scale(1)}34.14%{opacity:0;transform:scale(1.55)}100.00%{opacity:0;transform:scale(1.55)}}@keyframes n3{0.00%{opacity:0}35.56%{opacity:0}36.52%{opacity:1}44.26%{opacity:0}85.00%{opacity:0}85.96%{opacity:1}93.71%{opacity:0}100.00%{opacity:0}}@keyframes r3{0.00%{opacity:0;transform:scale(1)}35.56%{opacity:0;transform:scale(1)}36.52%{opacity:.7;transform:scale(1)}45.07%{opacity:0;transform:scale(1.55)}85.00%{opacity:0;transform:scale(1)}85.96%{opacity:.7;transform:scale(1)}94.51%{opacity:0;transform:scale(1.55)}100.00%{opacity:0;transform:scale(1.55)}}@keyframes n4{0.00%{opacity:0}45.05%{opacity:0}46.02%{opacity:1}53.76%{opacity:0}93.54%{opacity:0}94.51%{opacity:1}100.00%{opacity:0}100.00%{opacity:0}}@keyframes r4{0.00%{opacity:0;transform:scale(1)}45.05%{opacity:0;transform:scale(1)}46.02%{opacity:.7;transform:scale(1)}54.56%{opacity:0;transform:scale(1.55)}93.54%{opacity:0;transform:scale(1)}94.51%{opacity:.7;transform:scale(1)}100.00%{opacity:0;transform:scale(1.55)}100.00%{opacity:0;transform:scale(1.55)}}</style>
+<rect width="880" height="256" rx="18" fill="url(#bg)"/>
+<rect width="880" height="256" rx="18" fill="url(#halo)"/>
+<rect width="880" height="256" rx="18" fill="url(#dots)"/>
+<rect x=".5" y=".5" width="879" height="255" rx="17.5" fill="none" stroke="#262c3d"/>
+<text x="40" y="44" class="m" font-size="11" fill="#69738a" letter-spacing="2.4">HOW IT WORKS</text>
+<path d="M104 146H784" stroke="#2a3142" stroke-width="2"/>
+<path d="M262 122C262 60 626 60 626 122" fill="none" stroke="#eef1f6" stroke-opacity=".35" stroke-width="1.6" stroke-dasharray="3 6"/>
+<text x="444" y="54" class="s" font-size="13.5" font-weight="600" text-anchor="middle"><tspan fill="#eef1f6">one concept: </tspan><tspan fill="#fbbf24">direct fix</tspan></text>
+<path d="M104 146H784" fill="none" stroke="#fbbf24" stroke-opacity=".25" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 4000" stroke-dashoffset="18" style="animation:pm 6.2s linear infinite"/><path d="M104 146H784" fill="none" stroke="#fff4cf" stroke-width="3" stroke-linecap="round" stroke-dasharray="18 4000" stroke-dashoffset="18" style="animation:pm 6.2s linear infinite"/>
+<path d="M104 146H262V122C262 60 626 60 626 122V146H784" fill="none" stroke="#fbbf24" stroke-opacity=".25" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 4000" stroke-dashoffset="18" style="animation:pb 6.2s linear infinite"/><path d="M104 146H262V122C262 60 626 60 626 122V146H784" fill="none" stroke="#fff4cf" stroke-width="3" stroke-linecap="round" stroke-dasharray="18 4000" stroke-dashoffset="18" style="animation:pb 6.2s linear infinite"/>
+<circle class="fb" cx="104" cy="146" r="24" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0" style="animation:r0 6.2s linear infinite"/>
+<circle cx="104" cy="146" r="24" fill="#121725" stroke="#343c50" stroke-width="1.5"/>
+<circle cx="104" cy="146" r="24" fill="#fbbf24" fill-opacity=".1" stroke="#fbbf24" stroke-width="2" opacity="0" style="animation:n0 6.2s linear infinite"/>
+<g fill="none" stroke="#e7ebf2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="93" y="137" width="22" height="15" rx="4"/><path d="M99 152l-3 5l7-5"/></g>
+<text x="104" y="196" class="s" font-size="14" fill="#eef1f6" text-anchor="middle" font-weight="600">Ask</text>
+<text x="104" y="217" class="m" font-size="11" fill="#828ca0" text-anchor="middle">plain words or /gamedev</text>
+<circle class="fb" cx="262" cy="146" r="24" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0" style="animation:r1 6.2s linear infinite"/>
+<circle cx="262" cy="146" r="24" fill="#121725" stroke="#343c50" stroke-width="1.5"/>
+<circle cx="262" cy="146" r="24" fill="#fbbf24" fill-opacity=".1" stroke="#fbbf24" stroke-width="2" opacity="0" style="animation:n1 6.2s linear infinite"/>
+<g fill="none" stroke="#e7ebf2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="262" cy="146" r="10"/><circle cx="262" cy="146" r="5"/><circle cx="262" cy="146" r="1.6" fill="#e7ebf2"/></g>
+<text x="262" y="196" class="s" font-size="14" fill="#eef1f6" text-anchor="middle" font-weight="600">Promise</text>
+<text x="262" y="217" class="m" font-size="11" fill="#828ca0" text-anchor="middle">what must feel right</text>
+<circle class="fb" cx="444" cy="146" r="24" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0" style="animation:r2 6.2s linear infinite"/>
+<circle cx="444" cy="146" r="24" fill="#121725" stroke="#343c50" stroke-width="1.5"/>
+<circle cx="444" cy="146" r="24" fill="#fbbf24" fill-opacity=".1" stroke="#fbbf24" stroke-width="2" opacity="0" style="animation:n2 6.2s linear infinite"/>
+<g fill="none" stroke="#e7ebf2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="438.5" cy="140.5" r="4" fill="#ff6fae" stroke="none"/><circle cx="449.5" cy="140.5" r="4" fill="#36d6f0" stroke="none"/><circle cx="438.5" cy="151.5" r="4" fill="#9ee34a" stroke="none"/><circle cx="449.5" cy="151.5" r="4" fill="#a78bfa" stroke="none"/></g>
+<text x="444" y="196" class="s" font-size="14" fill="#eef1f6" text-anchor="middle" font-weight="600">Specialists</text>
+<text x="444" y="217" class="m" font-size="11" fill="#828ca0" text-anchor="middle">mixed work, audits</text>
+<circle class="fb" cx="626" cy="146" r="24" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0" style="animation:r3 6.2s linear infinite"/>
+<circle cx="626" cy="146" r="24" fill="#121725" stroke="#343c50" stroke-width="1.5"/>
+<circle cx="626" cy="146" r="24" fill="#fbbf24" fill-opacity=".1" stroke="#fbbf24" stroke-width="2" opacity="0" style="animation:n3 6.2s linear infinite"/>
+<g fill="none" stroke="#e7ebf2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M621 139L615 146L621 153M631 139L637 146L631 153M628 137L624 155"/></g>
+<text x="626" y="196" class="s" font-size="14" fill="#eef1f6" text-anchor="middle" font-weight="600">Smallest change</text>
+<text x="626" y="217" class="m" font-size="11" fill="#828ca0" text-anchor="middle">in your own code</text>
+<circle class="fb" cx="784" cy="146" r="24" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0" style="animation:r4 6.2s linear infinite"/>
+<circle cx="784" cy="146" r="24" fill="#121725" stroke="#343c50" stroke-width="1.5"/>
+<circle cx="784" cy="146" r="24" fill="#fbbf24" fill-opacity=".1" stroke="#fbbf24" stroke-width="2" opacity="0" style="animation:n4 6.2s linear infinite"/>
+<g fill="none" stroke="#e7ebf2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M775 146L781 152L794 139"/></g>
+<text x="784" y="196" class="s" font-size="14" fill="#eef1f6" text-anchor="middle" font-weight="600">Verified</text>
+<text x="784" y="217" class="m" font-size="11" fill="#828ca0" text-anchor="middle">checked, then reported</text>
+</svg>

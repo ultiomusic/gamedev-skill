@@ -38,6 +38,7 @@ Treat these values as hypotheses to test on the representative build and device,
 | Spatial partitioning | Uniform grid, cell about 2x the largest object, `cell = floor(position / cellSize)`; test own cell plus 8 neighbours. Without it pairs grow n squared: 48 objects = 1,128 checks, 1,000 = about 500,000. | Grid treated as the collision test; it only yields candidates, so run the exact check. Insert spanning objects in every overlapped cell and deduplicate pairs. |
 | Time slicing | 4 to 8 buckets by index, `bucket = frame mod count`; one bucket of decisions per frame, movement and animation every frame. | Added response delay (up to `count` frames) not measured; urgent work on the sliced schedule; all expensive agents in one bucket. Give urgent work its own budget; spread cost evenly. |
 | Chunk streaming | Load radius below unload radius, such as 2 and 3 chunks of 32 x 32 tiles; build data async, pool chunk objects, budget activation per frame. | One radius thrashing on a border; chunk unloaded with pending saves or live neighbour references; activation spike on the main thread. Check before unloading; cap activations per frame. |
+| Mobile thermals | Set the target frame rate explicitly (30 or 60, a divisor of the display refresh rate) and cap render resolution; measure 15 to 30 minutes on mid-range and low-end phones, not only the first minute. | Desktop or first-minute numbers; a hot phone throttles, so a scene that holds 60 fps at launch can settle far lower. Report the sustained rate. |
 
 ## Falsifiable experiment
 

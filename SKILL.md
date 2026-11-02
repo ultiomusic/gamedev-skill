@@ -1,6 +1,6 @@
 ---
 name: gamedev
-description: Design, build, tune, and repair games through focused 3D/rendering, game-feel, systems, and performance specialists; use for playable mechanics, visual clarity, reliable rules, or games that work but feel wrong. Also for single concepts such as coyote time, input buffering, delta time, object pooling, z-fighting, or frame budget.
+description: Design, build, tune, and repair games through focused game-feel, 3D/rendering, systems, and performance specialists. Use for playable mechanics, visual clarity, reliable rules, frame-rate problems, or games that work but feel wrong, in Unity, Godot, Unreal, or web projects; also for single concepts such as coyote time, jump feel, input buffering, delta time, object pooling, save data, z-fighting, or frame budget.
 ---
 
 # Coordinate a game that keeps its promise
@@ -11,7 +11,9 @@ Build around what the player can perceive, decide, and do. Preserve the genre, d
 
 Translate the request into a short playable promise: **action and device; intended quality; rule and consequence; repeatable proof**. For example, a heavy yet responsive attack keeps its committed hit timing while making the next accepted input understandable. For a small fix, one sentence is enough.
 
-Inspect existing instructions and edits, the actual engine/version, entry scene, input, and serialized configuration. Trace the normal player path; an unused script, debug shortcut, stale binary, or source initializer is not the running game. Read [Unity integration](references/unity.md) only for Unity work. Share this discovery instead of having every specialist repeat it.
+Inspect existing instructions and edits, the actual engine/version, entry scene, input, and serialized configuration. Trace the normal player path; an unused script, debug shortcut, stale binary, or source initializer is not the running game. Once the engine is known, read only its section of the [engine notes](engines.md). Share this discovery instead of having every specialist repeat it.
+
+With no project yet, use the engine the user names; when none is named, a single HTML file with a canvas is the smallest thing that runs anywhere. Make one loop playable through normal controls before adding menus, content, or architecture, and say how to run it.
 
 ## Select specialists
 
@@ -19,10 +21,10 @@ Use the matching brief as a subagent assignment. Load only the relevant briefs; 
 
 | Specialist | Delegate when the task concerns | Owns | Concept vocabulary |
 | --- | --- | --- | --- |
-| [3D & Rendering](references/3d-rendering.md) (`gamedev-3d-rendering`) | Geometry, spaces, materials, lighting, projection, camera composition, visual readability. | The image and its relationship to the world. | raycasting, normals, level of detail, frustum culling, fragment shader, billboarding, quaternions, z-fighting |
-| [Game Feel](references/game-feel.md) (`gamedev-game-feel`) | Movement response, action rhythm, camera motion, input forgiveness, audiovisual feedback. | Perceived response and event timing. | delta time, coyote time, easing, screen shake, squash and stretch, camera deadzone, input buffering, acceleration and friction, hit stop, invincibility frames |
-| [Systems](references/systems.md) (`gamedev-systems`) | Playable loops, rules, economy, progression, AI, delayed actions, persistence. | Authoritative state and meaningful consequences. | object pooling, state machine, hitbox and hurtbox, pathfinding, particle system, fixed timestep, steering behaviors, tunneling, seeded noise |
-| [Performance](references/performance.md) (`gamedev-performance`) | Hitches, frame pacing, CPU/GPU cost, allocations, memory, streaming. | Measured cost without broken gameplay or visuals. | frame budget, draw calls, spatial partitioning, overdraw, time slicing, texture atlas, chunk streaming |
+| [3D & Rendering](3d-rendering.md) (`gamedev-3d-rendering`) | Geometry, spaces, materials, lighting, projection, camera composition, visual readability. | The image and its relationship to the world. | raycasting, normals, level of detail, frustum culling, fragment shader, billboarding, quaternions, z-fighting, shadow bias |
+| [Game Feel](game-feel.md) (`gamedev-game-feel`) | Movement response, action rhythm, camera motion, input forgiveness, audiovisual feedback. | Perceived response and event timing. | delta time, coyote time, jump arc, easing, screen shake, squash and stretch, camera deadzone, input buffering, stick deadzone, acceleration and friction, hit stop, invincibility frames |
+| [Systems](systems.md) (`gamedev-systems`) | Playable loops, rules, economy, progression, AI, delayed actions, persistence. | Authoritative state and meaningful consequences. | object pooling, state machine, hitbox and hurtbox, pathfinding, particle system, fixed timestep, steering behaviors, tunneling, seeded noise, save data |
+| [Performance](performance.md) (`gamedev-performance`) | Hitches, frame pacing, CPU/GPU cost, allocations, memory, streaming. | Measured cost without broken gameplay or visuals. | frame budget, draw calls, spatial partitioning, overdraw, time slicing, texture atlas, chunk streaming, mobile thermals |
 
 Choose the earliest mismatch in **intent → input → eligibility → committed state → feedback → next decision**. An attractive effect cannot repair a lost reward. For mixed work, name a lead and supporting specialists; for a requested full game audit, dispatch all four. A narrow task inside one domain takes the direct path below; delegate a single specialist only when it needs its own investigation, with a handoff if evidence crosses domains.
 

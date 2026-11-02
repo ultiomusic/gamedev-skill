@@ -1,49 +1,52 @@
-# gamedev-skill
+# gamedev
 
-Claude Code ve Codex için oyun hissiyatı, doğru gameplay ve ölçülmüş performans skill'i.
-Tek ortak paket: [`skills/gamedev/SKILL.md`](skills/gamedev/SKILL.md).
-Motor bağımsız ana akış; Unity için gerektiğinde okunan kısa entegrasyon notları.
+Claude Code ve Codex için oyun mekaniği tasarlayan, uygulayan ve hissiyatını iyileştiren ortak skill.
+Ana dosya: [`skills/gamedev/SKILL.md`](skills/gamedev/SKILL.md).
 
-34 oyun geliştirme kavramının tamamı
-[karar ve doğrulama rehberinde](skills/gamedev/references/concepts.md) kapsanır.
-Kavramlar her projeye zorla eklenmez; oyuncunun yaşadığı belirtiye göre seçilir.
+## Nasıl düşünür?
+
+Önce oyuncunun niyetini ve beklenen deneyimi belirler; sonra input, kural, gerçek sonuç,
+geri bildirim ve sonraki karar arasındaki kopukluğu bulur. Yeni mekanikte normal kontrollerle
+ulaşılan oynanabilir döngüyü tamamlar; mevcut mekanikte en etkili küçük değişikliği seçer.
+
+“Daha ağır hareket” isteğini input gecikmesine çevirmek yerine hızlanma, durma mesafesi
+ve görsel ağırlığı ayırır. “Daha tatmin edici inşa” isteğinde ödeme, yerleşim, tamamlanma ve
+tekrar seçim ilişkisini kurar. “Oyun sıkıcı” dendiğinde yeni sistemler eklemeden mevcut
+seçimlerin sonraki kararı değiştirip değiştirmediğini inceler.
+
+[Gameplay alıştırmaları](skills/gamedev/references/gameplay.md) bu kararları kısa deneylere
+çevirir: oynanış döngüsü, hareket, eylem ritmi, kamera, ekonomi, karşılaşma ve yük altında
+kararlılık. [Unity notları](skills/gamedev/references/unity.md) yalnızca Unity işlerinde okunur.
+Skill çevrimdışı anlaşılır ve uygulanabilir; bir siteyi açmayı veya bir kavram listesini
+tamamlamayı gerektirmez. Başka motorlarda o projenin mevcut araçlarını kullanır.
 
 ## Kurulum
 
-Repoyu klonladıktan sonra **yalnızca `skills/gamedev` klasörünü içeriğiyle birlikte**
-istediğiniz proje kökündeki aşağıdaki konumlara kopyalayın:
+`skills/gamedev` klasörünü **bütün içeriğiyle** aşağıdaki hedefe kopyalayın:
 
-| Araç | Hedef | Açık çağrı |
+| Araç | Proje içindeki hedef | Çağrı |
 | --- | --- | --- |
 | Codex | `.agents/skills/gamedev/` | `$gamedev` |
 | Claude Code | `.claude/skills/gamedev/` | `/gamedev` |
 
-Her ikisinde de aynı dosyalar kullanılır; API anahtarı, MCP, paket kurulumu veya
-araca özgü betik gerekmez. Otomatik seçim açıktır. Güncellemede aynı klasörü yeniden
-kopyalayın; referansları atlamayın. Skill görünmüyorsa oturumu yeniden başlatın.
-Kişisel kullanım için aynı klasör sırasıyla `~/.agents/skills/` veya
-`~/.claude/skills/` altına konabilir.
-
+Kişisel kullanım için hedefleri sırasıyla `~/.agents/skills/gamedev/` ve
+`~/.claude/skills/gamedev/` kullanın. Tek paket, otomatik seçim; API anahtarı, MCP veya
+çalıştırılacak kurulum betiği gerektirmez. Görünmüyorsa oturumu yeniden başlatın.
 Kurulum biçimi [Codex](https://learn.chatgpt.com/docs/build-skills) ve
-[Claude Code](https://code.claude.com/docs/en/skills) belgelerine dayanır.
+[Claude Code](https://code.claude.com/docs/en/skills) belgeleriyle uyumludur.
 
-## Kullanım
+## Örnek istekler
 
 ```text
-$gamedev Bu oyunda dokunma bazen iki satın alma yapıyor; nedeni bul, en küçük düzeltmeyi yap ve doğrula.
-/gamedev Kameranın takip hissini iyileştir; mevcut kamera sistemini koru, düşük FPS ve pause/resume ile sına.
-$gamedev Bu Unity projesini yalnızca incele; en önemli üç hissiyat sorununu dosya/satır kanıtıyla raporla.
+$gamedev Ağır ama duyarlı bir hareket istiyorum; mevcut kontrolcüyü koruyup durma ve yön değiştirme hissini iyileştir.
+/gamedev İnşa etmek tatmin etmiyor; ödeme, yerleşim, geri bildirim ve sonraki seçim döngüsünü inceleyip küçük bir iyileştirme uygula.
+$gamedev Bu prototipte ilk oynanabilir döngüyü tamamla; bir eylem, anlamlı sonucu ve tekrar deneme yolu olsun.
+/gamedev Şehir kurma oyunumdaki seçimler birbirine benziyor; dosyaları değiştirmeden mevcut sistemlerle sınanabilecek tek bir tasarım deneyi çıkar.
 ```
-
-Skill önce gerçek sahneyi, input/state/simulation zincirini ve mevcut testleri okur;
-sonra küçük bir davranış sözleşmesiyle ilerler. Ekran sarsıntısı eklemeyi otomatik
-olarak iyileşme saymaz, derlenen kodu oynanış testi diye sunmaz ve ölçüm olmadan
-performans artışı iddia etmez.
 
 ## Doğrulama
 
-[Test kaydı](tests/README.md) ve [WalkingCity'deki 34 kavramın değerlendirmesi](tests/walkingcity-coverage.md)
-repo içinde. Codex yüklemesi gerçek araçla, skill davranışı bağımsız değerlendirmelerle
-ve Unity EditMode testleriyle sınandı; üç somut gameplay/feedback hatası yeniden üretildi.
-Claude uyumluluğu belge/biçim düzeyinde doğrulandı; Claude çalışma oturumu yürütülmedi.
-WalkingCity kaynakları kalıcı değiştirilmedi ve oyun reposuna commit atılmadı.
+[Test kaydı](tests/README.md) gerçek yürütme ile tasarım değerlendirmesini ayırır.
+WalkingCity önceki testlerde üç davranış hatasını ortaya çıkardı; oyun kaynakları kalıcı
+olarak değiştirilmedi ve oyun reposuna commit atılmadı. Claude Code çalışma oturumu
+bu ortamda çalıştırılmadı; uyumluluğu ortak dosya biçimi ve bağımsız yönergeler üzerinden sağlanır.

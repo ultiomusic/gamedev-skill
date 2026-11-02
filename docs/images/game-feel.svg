@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Timeline of coyote time and input buffering windows">
+<style>text{font-size:14px;fill:#24292f}.s{font-size:12px}.g{fill:#57606a}.h{font-size:18px;font-weight:700}.b{font-weight:700}.m{text-anchor:middle}.e{text-anchor:end}.B{fill:#0969da}.G{fill:#1a7f37}.R{fill:#cf222e}</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#57606a"/></marker></defs>
+<rect x=".5" y=".5" width="879" height="319" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="30" class="h">Coyote time and input buffering</text>
+<text x="24" y="70" class="b">Coyote time</text>
+<rect x="120" y="104" width="80" height="10" fill="#d0d7de"/>
+<text x="196" y="96" class="s g e">leaves ledge, t=0</text>
+<rect x="200" y="66" width="150" height="38" fill="#1a7f37" fill-opacity=".08" stroke="#1a7f37"/>
+<rect x="200" y="66" width="100" height="38" fill="#1a7f37" fill-opacity=".12"/>
+<text x="208" y="86" class="s G">coyote 0.1 to 0.15 s</text>
+<path d="M200 60V104" stroke="#57606a" stroke-dasharray="3 3"/>
+<path d="M120 104H846" stroke="#57606a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="846" y="96" class="s g e">time</text>
+<circle cx="280" cy="104" r="6" fill="#1a7f37"/>
+<text x="280" y="126" class="s G m">late press: accepted</text>
+<circle cx="450" cy="104" r="6" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+<path d="M446 100l8 8m0-8l-8 8" stroke="#cf222e" stroke-width="1.5"/>
+<text x="450" y="126" class="s R m">rejected, not queued</text>
+<text x="24" y="164" class="b">Input buffer</text>
+<text x="130" y="190" class="s g">airborne, falling</text>
+<rect x="550" y="160" width="100" height="38" fill="#0969da" fill-opacity=".12" stroke="#0969da"/>
+<text x="600" y="152" class="s B m">buffer about 0.1 s</text>
+<rect x="650" y="198" width="150" height="10" fill="#d0d7de"/>
+<text x="656" y="190" class="s g">lands</text>
+<path d="M120 198H846" stroke="#57606a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="846" y="190" class="s g e">time</text>
+<circle cx="580" cy="198" r="6" fill="#0969da"/>
+<path d="M586 190Q615 170 646 190" fill="none" stroke="#0969da" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="580" y="222" class="s B m">early press: fires on landing, consumed once</text>
+<rect x="24" y="236" width="832" height="68" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="262"><tspan class="b R">Trap:</tspan> grace not consumed on jump</text>
+<text x="470" y="262" class="s G">fix: zero the grace on jump, update grounded first</text>
+<text x="40" y="288"><tspan class="b R">Trap:</tspan> buffer never expires</text>
+<text x="470" y="288" class="s G">fix: clear on fire, keep the window short</text>
+</svg>

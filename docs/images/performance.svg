@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Frame budget with overlapping CPU, render thread and GPU timelines, plus overdraw">
+<style>text{font-size:14px;fill:#24292f}.s{font-size:12px}.g{fill:#57606a}.h{font-size:18px;font-weight:700}.b{font-weight:700}.m{text-anchor:middle}.B{fill:#0969da}.O{fill:#bc4c00}.R{fill:#cf222e}</style>
+<rect x=".5" y=".5" width="879" height="319" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="30" class="h">Reading a frame budget</text>
+<rect x="40" y="44" width="600" height="26" rx="4" fill="#f6f8fa" stroke="#0969da" stroke-width="1.5"/>
+<text x="340" y="62" class="m b B">16.67 ms budget at 60 fps</text>
+<path d="M640 44V184" stroke="#0969da" stroke-dasharray="4 3"/>
+<g fill-opacity=".14" stroke-width="1.5">
+<rect x="40" y="84" width="324" height="26" rx="3" fill="#0969da" stroke="#0969da"/>
+<rect x="184" y="118" width="216" height="26" rx="3" fill="#8250df" stroke="#8250df"/>
+<rect x="220" y="152" width="396" height="26" rx="3" fill="#bc4c00" stroke="#bc4c00"/>
+</g>
+<text x="52" y="102">CPU main 9 ms</text>
+<text x="196" y="136">Render thread 6 ms</text>
+<text x="232" y="170">GPU 11 ms</text>
+<text x="40" y="204" class="b B">timelines overlap: do not sum them</text>
+<rect x="668" y="84" width="188" height="94" rx="8" fill="#ffffff" stroke="#cf222e"/>
+<text x="762" y="124" class="m R">9 + 6 + 11 = 26 ms</text>
+<path d="M690 119H834" stroke="#cf222e" stroke-width="2"/>
+<text x="762" y="148" class="m b R">(wrong)</text>
+<text x="762" y="168" class="m s g">sum of overlapping work</text>
+<path d="M24 218H856" stroke="#d0d7de"/>
+<text x="40" y="244" class="b">Overdraw</text>
+<text x="40" y="264" class="s g">one pixel, shaded 12 times</text>
+<g fill="#bc4c00" fill-opacity=".35">
+<rect x="230" y="226" width="24" height="5"/><rect x="230" y="232" width="24" height="5"/><rect x="230" y="238" width="24" height="5"/><rect x="230" y="244" width="24" height="5"/><rect x="230" y="250" width="24" height="5"/><rect x="230" y="256" width="24" height="5"/><rect x="230" y="262" width="24" height="5"/><rect x="230" y="268" width="24" height="5"/><rect x="230" y="274" width="24" height="5"/><rect x="230" y="280" width="24" height="5"/><rect x="230" y="286" width="24" height="5"/><rect x="230" y="292" width="24" height="5"/>
+</g>
+<rect x="229.5" y="225.5" width="25" height="72" fill="none" stroke="#57606a"/>
+<text x="270" y="254" class="b O">x12 translucent layers</text>
+<text x="270" y="280">overdraw = layers shading the same pixel</text>
+<g fill="#bc4c00" fill-opacity=".08" stroke="#bc4c00" stroke-opacity=".5">
+<rect x="600" y="226" width="80" height="44"/><rect x="605" y="228" width="80" height="44"/><rect x="610" y="230" width="80" height="44"/><rect x="615" y="232" width="80" height="44"/><rect x="620" y="234" width="80" height="44"/><rect x="625" y="236" width="80" height="44"/><rect x="630" y="238" width="80" height="44"/><rect x="635" y="240" width="80" height="44"/><rect x="640" y="242" width="80" height="44"/><rect x="645" y="244" width="80" height="44"/><rect x="650" y="246" width="80" height="44"/><rect x="655" y="248" width="80" height="44"/>
+</g>
+<rect x="664" y="256" width="6" height="6" fill="#24292f"/>
+<path d="M671 259H770" stroke="#24292f"/>
+<text x="774" y="263" class="s g">same pixel</text>
+</svg>

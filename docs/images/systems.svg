@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Fixed timestep accumulator: variable frames, fixed physics ticks, interpolated render">
+<style>text{font-size:14px;fill:#24292f}.s{font-size:12px}.g{fill:#57606a}.h{font-size:18px;font-weight:700}.b{font-weight:700}.m{text-anchor:middle}.e{text-anchor:end}</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#57606a"/></marker></defs>
+<rect x=".5" y=".5" width="879" height="319" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="30" class="h">Fixed timestep accumulator</text>
+<text x="40" y="56" class="b">Frames (variable dt)</text>
+<rect x="40" y="64" width="108" height="40" fill="#ffffff" stroke="#8c959f" stroke-dasharray="4 3"/>
+<g fill-opacity=".12" stroke-width="1.5">
+<rect x="148" y="64" width="126" height="40" fill="#0969da" stroke="#0969da"/>
+<rect x="274" y="64" width="198" height="40" fill="#1a7f37" stroke="#1a7f37"/>
+<rect x="472" y="64" width="81" height="40" fill="#bc4c00" stroke="#bc4c00"/>
+<rect x="553" y="64" width="279" height="40" fill="#8250df" stroke="#8250df"/>
+<rect x="40" y="138" width="150" height="30" fill="#0969da" stroke="#0969da"/>
+<rect x="190" y="138" width="150" height="30" fill="#1a7f37" stroke="#1a7f37"/>
+<rect x="340" y="138" width="150" height="30" fill="#bc4c00" stroke="#bc4c00"/>
+<rect x="490" y="138" width="150" height="30" fill="#8250df" stroke="#8250df"/>
+<rect x="640" y="138" width="150" height="30" fill="#8250df" stroke="#8250df"/>
+</g>
+<text x="94" y="81" class="s g m">previous</text>
+<text x="94" y="97" class="s g m">acc = 12 ms</text>
+<text x="211" y="81" class="m">14 ms</text>
+<text x="211" y="97" class="s g m">1 tick</text>
+<text x="373" y="81" class="m">22 ms</text>
+<text x="373" y="97" class="s g m">1 tick</text>
+<text x="512" y="81" class="m">9 ms</text>
+<text x="512" y="97" class="s g m">1 tick</text>
+<text x="692" y="81" class="m">31 ms</text>
+<text x="692" y="97" class="s g m">2 ticks</text>
+<g stroke="#d0d7de" stroke-dasharray="2 3"><path d="M148 104V138"/><path d="M274 104V138"/><path d="M472 104V138"/><path d="M553 104V138"/></g>
+<text x="40" y="130" class="b">Physics ticks (1/60 s each)</text>
+<text x="115" y="157" class="s m">16.7 ms</text>
+<text x="265" y="157" class="s m">16.7 ms</text>
+<text x="415" y="157" class="s m">16.7 ms</text>
+<text x="565" y="157" class="s m">16.7 ms</text>
+<text x="715" y="157" class="s m">16.7 ms</text>
+<rect x="790" y="138" width="42" height="30" fill="#f6f8fa" stroke="#57606a" stroke-dasharray="3 2"/>
+<text x="811" y="157" class="s m">4.7</text>
+<path d="M832 153H864" stroke="#57606a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="856" y="186" class="s g e">remainder carried</text>
+<text x="40" y="206" class="b">Render</text>
+<text x="100" y="206" class="s g">interpolate prev -&gt; cur by a = acc/step</text>
+<path d="M40 222H840" stroke="#d0d7de"/>
+<g fill="#57606a"><rect x="269" y="214" width="10" height="16"/><rect x="467" y="214" width="10" height="16"/><rect x="548" y="214" width="10" height="16"/><rect x="827" y="214" width="10" height="16"/></g>
+<text x="274" y="246" class="s g m">a=0.56</text>
+<text x="472" y="246" class="s g m">a=0.88</text>
+<text x="553" y="246" class="s g m">a=0.42</text>
+<text x="832" y="246" class="s g m">a=0.28</text>
+<rect x="24" y="260" width="832" height="44" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="287">Accumulator capped about 0.25 s (no spiral of death); fixed step is not cross-machine determinism.</text>
+</svg>

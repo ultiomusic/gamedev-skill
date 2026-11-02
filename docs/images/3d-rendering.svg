@@ -1,38 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Z-fighting fix by lifting the decal, and yaw-only billboarding versus full LookAt">
-<style>text{font-size:14px;fill:#24292f}.s{font-size:12px}.g{fill:#57606a}.h{font-size:18px;font-weight:700}.b{font-weight:700}.m{text-anchor:middle}.G{fill:#1a7f37}.O{fill:#bc4c00}.R{fill:#cf222e}</style>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#57606a"/></marker>
-<pattern id="z" width="16" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#cf222e"/><rect x="8" width="8" height="8" fill="#8c959f"/></pattern></defs>
-<rect x=".5" y=".5" width="879" height="319" rx="12" fill="#ffffff" stroke="#d0d7de"/>
-<rect x="16" y="16" width="416" height="240" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
-<rect x="448" y="16" width="416" height="240" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="32" y="44" class="h">Z-fighting</text>
-<text x="464" y="44" class="h">Billboarding</text>
-<text x="40" y="80" class="s b R">broken</text>
-<text x="240" y="80" class="s b G">fixed</text>
-<text x="126" y="150" class="s g m">decal + floor, same height</text>
-<rect x="36" y="170" width="180" height="4" fill="#57606a"/>
-<rect x="66" y="166" width="120" height="8" fill="url(#z)"/>
-<path d="M66 166l8 8 8-8 8 8 8-8 8 8 8-8 8 8 8-8 8 8 8-8 8 8 8-8 8 8 8-8 8 8" fill="none" stroke="#24292f"/>
-<text x="126" y="198" class="s R m">coplanar: flickers</text>
-<text x="326" y="150" class="s g m">decal lifted off the floor</text>
-<rect x="236" y="170" width="180" height="4" fill="#57606a"/>
-<rect x="266" y="160" width="120" height="6" fill="#0969da"/>
-<path d="M402 170V140" stroke="#57606a" stroke-width="1.5" marker-end="url(#a)"/>
-<text x="407" y="148" class="s g">n</text>
-<text x="326" y="196" class="s G m">lifted about 1 cm</text>
-<text x="326" y="212" class="s G m">along the normal</text>
-<text x="326" y="232" class="s g m">(or polygon offset -1, -4)</text>
-<g fill="#57606a" transform="rotate(30 490 100)"><rect x="470" y="90" width="34" height="22" rx="3"/><path d="M504 95l16-7v26l-16-7z"/></g>
-<text x="464" y="150" class="s g">camera pitched down</text>
-<g stroke="#8c959f" stroke-dasharray="4 4"><path d="M522 116L660 140"/><path d="M522 116L790 140"/></g>
-<path d="M600 210H850" stroke="#8c959f" stroke-width="1.5"/>
-<g fill="#8c959f"><rect x="652" y="180" width="16" height="30" rx="4"/><circle cx="660" cy="172" r="8"/><rect x="782" y="180" width="16" height="30" rx="4"/><circle cx="790" cy="172" r="8"/></g>
-<g transform="rotate(30 660 140)"><rect x="630" y="135" width="60" height="10" fill="#ffffff" stroke="#24292f"/><rect x="630" y="135" width="40" height="10" fill="#1a7f37"/></g>
-<rect x="760" y="135" width="60" height="10" fill="#ffffff" stroke="#24292f"/><rect x="760" y="135" width="40" height="10" fill="#1a7f37"/>
-<text x="660" y="230" class="s b O m">full LookAt:</text>
-<text x="660" y="246" class="s O m">tilts with pitch</text>
-<text x="790" y="230" class="s b G m">yaw only:</text>
-<text x="790" y="246" class="s G m">stays upright</text>
-<rect x="16" y="268" width="848" height="38" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="32" y="292"><tspan class="b">Label anchor:</tspan> project the visible child, not the root; skip when z &lt; 0</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 260" width="880" height="260" font-family="ui-monospace, 'Cascadia Mono', Consolas, 'Courier New', monospace" font-size="12">
+<rect x="0.5" y="0.5" width="879" height="259" rx="10" fill="#0e0f14" stroke="#262a33"/>
+<text x="16" y="32" font-size="13" fill="#e6e8ee">z-fighting</text>
+<text x="230" y="66" fill="#f06a6a" text-anchor="middle">same plane</text>
+<polygon points="80,140 230,85 380,140 230,195" fill="#161922" stroke="#3a3f4b"/>
+<path d="M170 140A60 22 0 1 0 290 140A60 22 0 1 0 170 140Z" fill="#2a2e38"/>
+<polygon points="176,130.4 184,125.9 184,154.1 176,149.6" fill="#f5b942"/>
+<polygon points="192,123.0 200,120.9 200,159.1 192,157.0" fill="#f5b942"/>
+<polygon points="208,119.5 216,118.6 216,161.4 208,160.5" fill="#f5b942"/>
+<polygon points="224,118.1 232,118.0 232,162.0 224,161.9" fill="#f5b942"/>
+<polygon points="240,118.3 248,119.0 248,161.0 240,161.7" fill="#f5b942"/>
+<polygon points="256,120.2 264,121.9 264,158.1 256,159.8" fill="#f5b942"/>
+<polygon points="272,124.3 280,127.8 280,152.2 272,155.7" fill="#f5b942"/>
+<text x="650" y="66" fill="#5fd4e8" text-anchor="middle">lifted 1 cm (or polygon offset)</text>
+<polygon points="500,140 650,85 800,140 650,195" fill="#161922" stroke="#3a3f4b"/>
+<path d="M590 141A60 22 0 0 0 710 141" fill="none" stroke="#5fd4e8"/>
+<path d="M590 136A60 22 0 1 0 710 136A60 22 0 1 0 590 136Z" fill="#f5b942"/>
+<text x="440" y="232" fill="#9aa3b2">near 0.1, not 0.01</text>
 </svg>

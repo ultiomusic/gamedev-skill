@@ -1,55 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Coordinator flow: request, playable promise, one-concept check, direct path or specialists, integrate, verify, report">
-<style>text{font-size:14px;fill:#24292f}.s{font-size:12px}.g{fill:#57606a}.h{font-size:18px;font-weight:700}.b{font-weight:700}.m{text-anchor:middle}.B{fill:#0969da}.G{fill:#1a7f37}.O{fill:#bc4c00}.P{fill:#8250df}</style>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#57606a"/></marker></defs>
-<rect x=".5" y=".5" width="879" height="319" rx="12" fill="#ffffff" stroke="#d0d7de"/>
-<text x="24" y="30" class="h">How the coordinator routes a request</text>
-<g fill="#f6f8fa" stroke-width="1.5">
-<rect x="14" y="138" width="66" height="40" rx="6" stroke="#57606a"/>
-<rect x="96" y="114" width="120" height="88" rx="6" stroke="#0969da"/>
-<path d="M272 122L312 158L272 194L232 158z" stroke="#bc4c00"/>
-<rect x="328" y="44" width="180" height="88" rx="6" stroke="#1a7f37"/>
-<rect x="328" y="148" width="180" height="160" rx="6" stroke="#8250df"/>
-<rect x="524" y="122" width="92" height="72" rx="6" stroke="#0969da"/>
-<rect x="632" y="104" width="120" height="108" rx="6" stroke="#1a7f37"/>
-<rect x="768" y="138" width="96" height="40" rx="6" stroke="#57606a"/>
-</g>
-<g fill="#ffffff" stroke="#d0d7de">
-<rect x="340" y="180" width="156" height="24" rx="4"/>
-<rect x="340" y="210" width="156" height="24" rx="4"/>
-<rect x="340" y="240" width="156" height="24" rx="4"/>
-<rect x="340" y="270" width="156" height="24" rx="4"/>
-</g>
-<g stroke="#57606a" stroke-width="1.5" fill="none" marker-end="url(#a)">
-<path d="M80 158H94"/><path d="M216 158H230"/>
-<path d="M272 122V88H326"/><path d="M272 194V228H326"/>
-<path d="M508 88H570V120"/><path d="M508 228H570V196"/>
-<path d="M616 158H630"/><path d="M752 158H766"/>
-</g>
-<text x="47" y="163" class="m">Request</text>
-<text x="156" y="136" class="m b B">Playable</text>
-<text x="156" y="153" class="m b B">promise</text>
-<text x="156" y="174" class="m s g">action, quality,</text>
-<text x="156" y="190" class="m s g">rule, proof</text>
-<text x="272" y="155" class="m s O">One</text>
-<text x="272" y="170" class="m s O">concept?</text>
-<text x="278" y="110" class="s g">yes</text>
-<text x="278" y="214" class="s g">no</text>
-<text x="340" y="66" class="b G">Direct path</text>
-<text x="340" y="86" class="s">Read the owning brief</text>
-<text x="340" y="102" class="s">Starting values and</text>
-<text x="340" y="118" class="s">traps row, run the check</text>
-<text x="340" y="170" class="b P">Specialists</text>
-<text x="352" y="196" class="s">3D &amp; Rendering</text>
-<text x="352" y="226" class="s">Game Feel</text>
-<text x="352" y="256" class="s">Systems</text>
-<text x="352" y="286" class="s">Performance</text>
-<text x="570" y="146" class="m b B">Integrate</text>
-<text x="570" y="166" class="m s g">the smallest</text>
-<text x="570" y="182" class="m s g">change</text>
-<text x="692" y="126" class="m b G">Verify</text>
-<text x="692" y="146" class="m s g">rates</text>
-<text x="692" y="162" class="m s g">interruption</text>
-<text x="692" y="178" class="m s g">rendered output</text>
-<text x="692" y="194" class="m s g">measured cost</text>
-<text x="816" y="163" class="m">Report</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 260" width="880" height="260" font-family="ui-monospace, 'Cascadia Mono', Consolas, 'Courier New', monospace" font-size="12">
+<rect x="0.5" y="0.5" width="879" height="259" rx="10" fill="#0e0f14" stroke="#262a33"/>
+<text x="16" y="32" font-size="13" fill="#e6e8ee">how a request is routed</text>
+<rect x="16" y="124" width="70" height="32" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="51.0" y="144" fill="#9aa3b2" text-anchor="middle">request</text>
+<rect x="115" y="124" width="135" height="32" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="182.5" y="144" fill="#9aa3b2" text-anchor="middle">playable promise</text>
+<rect x="279" y="124" width="106" height="32" rx="6" fill="none" stroke="#e6e8ee"/>
+<text x="332.0" y="144" fill="#e6e8ee" text-anchor="middle">one concept?</text>
+<rect x="547" y="124" width="128" height="32" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="611.0" y="144" fill="#9aa3b2" text-anchor="middle">smallest change</text>
+<rect x="704" y="124" width="64" height="32" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="736.0" y="144" fill="#9aa3b2" text-anchor="middle">verify</text>
+<rect x="797" y="124" width="64" height="32" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="829.0" y="144" fill="#9aa3b2" text-anchor="middle">report</text>
+<rect x="414" y="80" width="104" height="32" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="466" y="100" fill="#9aa3b2" text-anchor="middle">direct path</text>
+<rect x="414" y="160" width="104" height="48" rx="6" fill="none" stroke="#3a3f4b"/>
+<text x="466" y="180" fill="#9aa3b2" text-anchor="middle">specialists</text>
+<rect x="441" y="189" width="8" height="8" fill="#5fd4e8"/>
+<rect x="455" y="189" width="8" height="8" fill="#ff7eb6"/>
+<rect x="469" y="189" width="8" height="8" fill="#9be15d"/>
+<rect x="483" y="189" width="8" height="8" fill="#b89cff"/>
+<line x1="88" y1="140" x2="108" y2="140" stroke="#5c6370"/>
+<polygon points="107,136 113,140 107,144" fill="#5c6370"/>
+<line x1="252" y1="140" x2="272" y2="140" stroke="#5c6370"/>
+<polygon points="271,136 277,140 271,144" fill="#5c6370"/>
+<line x1="677" y1="140" x2="697" y2="140" stroke="#5c6370"/>
+<polygon points="696,136 702,140 696,144" fill="#5c6370"/>
+<line x1="770" y1="140" x2="790" y2="140" stroke="#5c6370"/>
+<polygon points="789,136 795,140 789,144" fill="#5c6370"/>
+<path d="M387 140H399V96H407M399 140V184H407M520 96H532V184H520M532 140H540" fill="none" stroke="#5c6370"/>
+<polygon points="406,92 412,96 406,100" fill="#5c6370"/>
+<polygon points="406,180 412,184 406,188" fill="#5c6370"/>
+<polygon points="539,136 545,140 539,144" fill="#5c6370"/>
 </svg>

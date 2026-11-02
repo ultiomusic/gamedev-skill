@@ -6,7 +6,7 @@ player can perceive, decide, and do, finds the earliest mismatch between intent 
 and lands the smallest change that fixes it, with proof.
 Entry point: [`skills/gamedev/SKILL.md`](skills/gamedev/SKILL.md).
 
-![Coordinator workflow: request, playable promise, direct path or specialists, integrate, verify, report](docs/images/workflow.svg)
+![How a request is routed: request, playable promise, one concept or specialists, smallest change, verify, report](docs/images/workflow.svg)
 
 ## What happens on a request
 
@@ -61,7 +61,7 @@ devices, never settings to copy.
 
 ### Game Feel (`gamedev-game-feel`)
 
-![Game Feel: coyote time and input buffering on a timeline](docs/images/game-feel.svg)
+![Game Feel example: the same late jump press, ignored without coyote time and accepted with it](docs/images/game-feel.svg)
 
 Owns perceived response and event timing: input acknowledgment versus acceptance, movement
 tuning, action rhythm, camera motion, and audiovisual feedback. It chooses the earliest mismatch
@@ -81,7 +81,7 @@ frame rates while jump height and gravity stay untouched.
 
 ### 3D & Rendering (`gamedev-3d-rendering`)
 
-![3D & Rendering: z-fighting fix and billboard orientation](docs/images/3d-rendering.svg)
+![3D & Rendering example: a decal on the same plane flickers; lifted 1 cm or with polygon offset it is stable](docs/images/3d-rendering.svg)
 
 Owns the image and its relationship to the world: geometry and spaces, normals, materials and
 pipeline, light and shadow, camera projection, and visual hierarchy. It traces source asset,
@@ -102,7 +102,7 @@ rendered output, including the smallest supported interaction scale.
 
 ### Systems (`gamedev-systems`)
 
-![Systems: fixed timestep accumulator with interpolation](docs/images/systems.svg)
+![Systems example: new Bullet() stalls on a GC pause; pool.get() reuses 14 slots with no garbage](docs/images/systems.svg)
 
 Owns authoritative state and meaningful consequences: eligibility, commitment, settlement,
 economy, progression, agent decisions, and persistence. It gives each action one owner and one
@@ -122,7 +122,7 @@ with an explicit empty-pool policy, and a pool-of-one reuse test that would reje
 
 ### Performance (`gamedev-performance`)
 
-![Performance: frame budget with overlapping CPU and GPU timelines](docs/images/performance.svg)
+![Performance example: four frames against the 16.67 ms budget, one render spike causes a stutter](docs/images/performance.svg)
 
 Owns measured cost: frame pacing, CPU and GPU work, allocation, memory residency, and streaming
 spikes. It establishes a comparable capture first (same scene, seed, camera, action sequence,

@@ -1,15 +1,30 @@
 # Evaluation record — 2026-11-02
 
-The revised skill is evaluated by the decisions it produces for a game, not by concept coverage. These checks distinguish design reasoning, code evidence, engine execution and subjective play.
+The skill is evaluated by the decisions it produces for a game, not by concept coverage. These checks distinguish design reasoning, code evidence, engine execution and subjective play. Earlier results below retain their original scope; they are not new runs of the four-specialist revision.
 
 ## Current package and host
 
 - Skill Creator `quick_validate.py` passed in Python UTF-8 mode (`python -X utf8`); the system-default Windows decoder cannot read some typographic punctuation.
-- Actual `codex-cli 0.166.0-alpha.5.1` app-server `skills/list` discovered the revised package in a fresh isolated `.agents/skills/gamedev` directory: one result, `scope=repo`, `enabled=true`.
+- Actual `codex-cli 0.166.0-alpha.5.1` app-server `skills/list` discovered the four-specialist package in a fresh isolated `.agents/skills/gamedev` directory: one result, `scope=repo`, `enabled=true`.
 - Both hosts use the same `name`/`description` frontmatter and local Markdown references; the installed package requires no website access, provider-specific substitutions, scripts or connectors.
 - Claude Code runtime execution remains untested because its CLI is unavailable; compatibility is based on its documented skill format, not an executed Claude session.
 
-## Independent transfer checks
+## Four-specialist delegation check
+
+Four fresh subagents actually ran through Codex collaboration tools, each receiving the shared skill, its own role brief, and the same [synthetic case](specialist-case.md), without expected answers or previous conclusions. Three started concurrently; the fourth used the next available slot. Each wrote only its assigned report. These were read-only reasoning tasks, with no game, rendered output, profiler, or player study available.
+
+| Specialist | Actual result | Boundary respected |
+| --- | --- | --- |
+| 3D & Rendering | Identified projection from the stationary parent instead of the offset, bobbing visual child; proposed using the displayed child's world anchor. | Did not invent screen-space severity or claim rendered success. |
+| Game Feel | Identified rejection feedback that still queues an action, cancellation that leaves it pending, and success audio that overstates accepted value. | Preserved the 0.8-second recovery and navigation-bearing sound; handed authoritative changes to Systems. |
+| Systems | Derived zero acceptance and loss of eight collectible units when capacity fills during travel; proposed preserving the remainder and invalidating canceled commands. | Did not impose a reservation framework or claim an implemented fix. |
+| Performance | Kept transparency cost and object-lifetime churn as separate hypotheses; specified a comparable capture before choosing a correction. | Rejected blanket pooling, disabling reward couriers, or removing directional audio without supporting evidence. |
+
+Integration review grouped the overlapping input/settlement findings by cause: Systems owns accepted state and value; Game Feel consumes that outcome; Rendering owns the anchor; Performance needs measurements. Keeping a queue versus rejecting recovery input remains a design choice, not a universal tuning rule. No shared game files were written, no runtime fix was integrated, and no performance improvement was measured.
+
+The coordinator passed format validation and discovery; local Markdown links resolve. This run validates specialist use and bounded handoffs through Codex's available tools. Claude Code delegation, automatic role selection on new requests, and rendered gameplay effectiveness remain untested. The package uses prompt-assigned roles rather than assuming custom agent types are registered.
+
+## Earlier revision: independent transfer checks
 
 A fresh evaluator received the skill and the following requests, without intended answers or prior findings. It did not access a game project or execute a game. These are actual reasoning outcomes, not proof that the proposed mechanics feel better.
 
@@ -21,7 +36,7 @@ A fresh evaluator received the skill and the following requests, without intende
 
 An independent editorial review found an assumption that repetition always needs strategic variety. The revised loop exercise now explicitly supports mastery, controllability, attributable mistakes and expression as well as consequential choices.
 
-## WalkingCity: revision-specific design evaluation
+## WalkingCity: earlier revision's design evaluation
 
 The revised skill was independently applied to the actual project in read-only mode, asking for one experiment about unsatisfying construction/upgrade decisions using existing systems. The evaluator was not given previous bug findings. It verified the active scene/config and normal input paths before choosing a design hypothesis.
 

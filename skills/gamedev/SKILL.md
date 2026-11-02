@@ -1,67 +1,70 @@
 ---
 name: gamedev
-description: Design, build, tune, and repair playable game mechanics and game feel; use for controls, combat, cameras, progression, feedback, and gameplay performance, including AI-generated games that work but feel wrong.
+description: Design, build, tune, and repair games through focused 3D/rendering, game-feel, systems, and performance specialists; use for playable mechanics, visual clarity, reliable rules, or games that work but feel wrong.
 ---
 
-# Make the player's action matter
+# Coordinate a game that keeps its promise
 
-Build around what the player can perceive, decide, and do. A mechanic is complete when its intention, rule, consequence, and next opportunity agree. Compiling, adding effects, or implementing more systems does not establish that agreement. Preserve the intended genre, difficulty and art direction; reply in the user's language.
+Build around what the player can perceive, decide, and do. Preserve the genre, difficulty, art direction, and user's scope. Compiling, adding effects, or adding systems does not establish a better experience. Reply in the user's language.
 
-## Start with a playable promise
+## Establish the shared contract
 
-Translate the request into a short working contract; for a small fix, one sentence is enough:
-- **Action:** what the player tries, in which situation, on which input device.
-- **Character:** one or two desired qualities and their tension, such as heavy yet controllable, tense yet readable, or relaxed yet consequential.
-- **Rule:** when the action is allowed, what success changes, and what rejection, interruption or failure does.
-- **Proof:** a repeatable sequence in which the player can notice the intended difference.
+Translate the request into a short playable promise: **action and device; intended quality; rule and consequence; repeatable proof**. For example, a heavy yet responsive attack keeps its committed hit timing while making the next accepted input understandable. For a small fix, one sentence is enough.
 
-Use existing design and runtime evidence to fill gaps. When intent is vague, choose a small reversible hypothesis and state the assumption; clarify only if the answer changes the design substantially. With only a snippet or symptom, give bounded guidance without inventing a project or execution.
+Inspect existing instructions and edits, the actual engine/version, entry scene, input, and serialized configuration. Trace the normal player path; an unused script, debug shortcut, stale binary, or source initializer is not the running game. Read [Unity integration](references/unity.md) only for Unity work. Share this discovery instead of having every specialist repeat it.
 
-Inspect the current diff, instructions, actual engine/version, entry scene, input and serialized configuration before editing. Trace the normal player path to the mechanic; do not mistake an unused script, debug shortcut or source initializer for the running game. Read [Unity integration](references/unity.md) for Unity execution and wiring.
+## Select specialists
 
-## Find the break in the experience
+Use the matching brief as a subagent assignment. Load only the relevant briefs; these are working roles, not four mandatory checklists.
 
-For an existing mechanic, trace **intent → input → eligibility → committed state → feedback → next decision**. Find the earliest mismatch; late-stage polish cannot repair an earlier broken promise.
-
-| What the player experiences | First investigation | A useful outcome |
+| Specialist | Delegate when the task concerns | Owns |
 | --- | --- | --- |
-| “It ignored me” or “I did not mean that” | Input ownership, UI capture, action eligibility, consumption and cancellation. | The intended action is acknowledged once; rejected actions explain why without firing later. |
-| “It works, but feels wrong” | Start/stop/reversal, contact timing, camera framing, and feedback relative to the state change. | Change a named response characteristic while preserving the rule and challenge. |
-| “I do the same thing every time” | Whether the intended reward is a consequential choice, expression, or mastery of execution. | A meaningful tradeoff, clearer consequence, or learnable challenge without inventing unwanted variety. |
-| “I lost and do not know why” | Threat visibility, telegraph, actual collision/damage, and the route back to agency. | The player can attribute the outcome and name a different action to try. |
-| “It gets worse when busy” | The same interaction under peak simulation, visual and input load. | Stable action timing and readable priorities within the measured frame budget. |
+| [3D & Rendering](references/3d-rendering.md) (`gamedev-3d-rendering`) | Geometry, spaces, materials, lighting, projection, camera composition, visual readability. | The image and its relationship to the world. |
+| [Game Feel](references/game-feel.md) (`gamedev-game-feel`) | Movement response, action rhythm, camera motion, input forgiveness, audiovisual feedback. | Perceived response and event timing. |
+| [Systems](references/systems.md) (`gamedev-systems`) | Playable loops, rules, economy, progression, AI, delayed actions, persistence. | Authoritative state and meaningful consequences. |
+| [Performance](references/performance.md) (`gamedev-performance`) | Hitches, frame pacing, CPU/GPU cost, allocations, memory, streaming. | Measured cost without broken gameplay or visuals. |
 
-For a new mechanic, build the smallest complete loop reachable through normal controls: invitation → choice → action → consequence → continuation or retry. Finish that loop before multiplying content, upgrade trees, managers or configuration. Decide where the new action lives in the existing loop and which old behavior it replaces or extends.
+Choose the earliest mismatch in **intent → input → eligibility → committed state → feedback → next decision**. An attractive effect cannot repair a lost reward. For mixed work, name a lead and supporting specialists; for a requested full game audit, dispatch all four. A narrow task needs only its relevant specialist, with a handoff if evidence crosses domains.
 
-For design or tuning work, read the relevant exercise in [the gameplay playbook](references/gameplay.md). Use it to produce an implementation or a falsifiable experiment, not a list of techniques. Audits stay read-only and rank findings instead of adding features.
+## Run the subagents
 
-## Turn a feeling into a controllable change
+Use the host's actual delegation tool: Codex's available subagent/collaboration tools, or Claude Code's `Agent` tool with an available general-purpose worker. The names above are task labels, not assumed registered agent types. Pass the role brief explicitly; do not assume child agents inherit loaded skills or conversation context. Keep the host's model and permission settings unless the user asks otherwise.
 
-1. Choose the strongest player-visible mismatch. Record the current response and the proposed difference; distinguish an observed defect from a design hypothesis.
-2. Pick a small set of parameters tied to that difference. Express movement as time/distance/acceleration, action rhythm as eligibility/commit/recovery, and feedback as onset/peak/decay. Do not hide latency under animation or transplant constants from another genre.
-3. Compare two deliberately distinguishable variants under the same sequence, seed, device and camera when useful. Keep other variables fixed; test a coordinated group only when its interaction is the hypothesis. Account for learning/order effects with counterbalanced runs or comparable fresh scenarios/players; a small pilot is not statistical proof. Avoid exposing every internal constant as a tuning control.
-4. Choose using the promised experience and its cost. Greater immediacy can reduce weight; more anticipation can improve fairness but slow repetition; stronger feedback can obscure the next decision. Record the tradeoff instead of calling every increase an improvement.
-5. Retain the smallest coherent change, remove experimental clutter, and stop when the stated contract is met. If the hypothesis fails, revert that experiment before adding compensating effects.
+Give each selected specialist this compact assignment, resolving file paths from the installed skill directory:
 
-## Make the implementation keep its promise
+```text
+Role: <specialist label>. Read <absolute SKILL.md> for shared constraints and
+<absolute role brief>; you are the specialist, not another coordinator.
+Task and playable promise: <request, expected change, proof>.
+Project facts: <root, engine/version, active scene/config, relevant evidence>.
+Mode and ownership: <read-only or implementation; exact writable paths>.
+Shared resources: <who controls the Editor, scene, tests, and shared files>.
+Return: evidence-backed finding; smallest change/proposal; actual checks and limits;
+cross-specialist dependency. Stay within this assignment; do not commit or publish.
+```
 
-- Give each action one authoritative commit point and owner. Acknowledge a press separately from confirming success; award, charge, damage, spawn and emit success feedback from the committed result, once. Decide what is queued, replaceable, cancelable or irreversible.
-- Revalidate delayed actions when they complete. Reserve capacity/resources when needed, release reservations on cancellation, and define partial acceptance/refund behavior. A target or pooled object must still represent the same action when a callback returns.
-- Keep simulation truth separate from display. Shake, recoil, squash, hover and interpolation must not accidentally move collision, selection anchors or saved state; intentional aim changes belong to gameplay. Derive world feedback from the object actually shown, in the correct space.
-- Interruptions are normal gameplay: repeat, reverse, pause, lose focus, cancel, die, unload and reuse. Define which action wins; an effect must not steal another action's completion callback, remember an intermediate pose as home, or restore someone else's clock/camera state.
-- Use units and clock domains explicitly. Integrate rates once; engine-integrated velocity and pointer displacement are not rates to multiply by dt again. Use an unaffected clock to end a freeze; fixed simulation needs bounded catch-up, input bridging and separate render interpolation.
-- Use the existing engine and project owners for physics, navigation, camera, audio and lifetime. Check unfamiliar APIs against the installed engine version before depending on them. Do not add a parallel controller or a generic framework for a local symptom. Preserve save compatibility, serialized overrides and metadata.
-- Give feedback a hierarchy: critical threat/rejection, primary action, then ambient decoration. Coordinate contact sound, visible contact and state change; vary repeated sounds without changing their meaning, limit simultaneous voices/effects, and respect motion/audio settings. Essential information needs an alternative when a channel is unavailable.
-- Optimize the measured bottleneck while preserving the action contract. Off-screen does not mean irrelevant, pooling does not reduce overdraw, and fewer draw calls do not guarantee shorter frames. Simplify low-value work before reducing control responsiveness or hiding needed information.
+Run independent investigations in parallel within the host's limits; queue remaining specialists when slots are full. Give concurrent implementers non-overlapping files. A shared controller, scene, material, Editor session, profiler capture, or save needs one owner and sequential changes; others return proposals. Specialists report to the coordinator rather than spawning the same team recursively.
 
-## Judge the result by play and evidence
+Wait for every requested specialist to finish or report a concrete limitation. Merge duplicate findings by cause, resolve conflicting recommendations against the playable promise, and choose one coherent change. Systems settles rule/commit questions; Game Feel aligns response; 3D & Rendering checks the image; Performance measures cost. The coordinator owns integration, shared-file edits, final verification, and authorized commits.
 
-Run the smallest relevant existing checks, and confirm actual test discovery/results. Then exercise the normal interaction: first attempt, repeat, boundary/failure, interruption and recovery. Add focused regression checks for demonstrated faults, not tests that restate your implementation.
+If delegation is unavailable or prohibited, use the selected briefs directly and disclose that no subagents ran. Do not claim parallel execution, install a second agent runtime, or change host settings to manufacture it.
 
-For timing changes, compare equal elapsed time at low/target/high render rates and relevant physics steps, including a hitch. For delayed work, change eligibility during the delay. For visual changes, inspect the rendered scene at the actual interaction scale. For performance, measure representative builds/hardware and slow-frame statistics rather than editor averages.
+## Integrate the smallest useful change
 
-When evaluating feel, compare the same play sequence before/after. Where useful, reduce optional presentation layers to check whether the rule remains legible; preserve audio/visual cues that are themselves the mechanic. Ask what the player noticed, intended and would do next, rather than merely whether it “feels better.” Automated correctness and human preference are different evidence.
+- For a new mechanic, finish a normal-control loop: invitation → choice → action → consequence → continuation or retry. Support the intended choice, mastery, or expression before adding content or infrastructure.
+- Distinguish an observed defect from a design hypothesis. Pick the strongest player-visible mismatch and an explicit condition that would reject the proposed fix. Audits stay read-only.
+- Compare deliberately different variants using the same sequence, seed, device, and camera where relevant. Keep other variables fixed; account for learning/order effects. A small pilot does not prove satisfaction.
+- Keep one authoritative owner and commit point. Presentation reads the committed result; interruption, delay, and reuse cannot duplicate rewards, lose accepted work, or steal another action's completion.
+- Use the existing physics, navigation, camera, audio, and lifetime owners. Verify unfamiliar APIs against the installed version; preserve saves, serialized overrides, and metadata. Remove failed experiments instead of hiding them under extra effects.
 
-Protect existing edits and saves; inspect automated-play/reset flags before running them. A stale binary cannot validate new source. Separate baseline failures from introduced regressions; fix only within the authorized task. Never report static analysis or an isolated prototype as a rendered playtest or integrated fix.
+## Verify the combined result
 
-Finish with the player-visible change, why it was chosen, what was actually tested, and the remaining tradeoff or uncertainty. For audits give evidence, a minimal correction and the next discriminating test; for implementation deliver the working loop rather than an unsolicited roadmap. Commit/publish only within the user's requested scope.
+Run the smallest relevant existing checks and confirm actual test discovery/results. Exercise the normal interaction, repetition, boundary/failure, interruption, and recovery. Add focused regression checks for demonstrated faults, not assertions that restate implementation.
+
+For timing, compare equal elapsed time across relevant render/physics rates and a hitch. For delayed work, change eligibility during the delay. Inspect visual changes in rendered output at interaction scale. Measure performance on representative builds/hardware; static code, Editor averages, and fewer draw calls cannot establish a performance win.
+
+Preserve mechanic-bearing audio/visual cues when comparing presentation. Ask what the player noticed, intended, and would do next. Correctness, rendered observation, measured cost, and human preference are different evidence; identify what was actually checked.
+
+Protect user edits and saves; inspect reset/automated-play flags before running them. Separate baseline failures from introduced regressions. Never label static reasoning, interrupted sessions, or isolated prototypes as completed playtests or integrated fixes.
+
+Finish with the player-visible result, specialists actually used, why the change was chosen, actual verification, and remaining tradeoffs. Commit/publish only within the user's requested scope.

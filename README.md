@@ -1,6 +1,6 @@
 # gamedev
 
-A shared skill for Claude Code and Codex to design, implement, and improve game mechanics and game feel.
+A shared skill for Claude Code and Codex with four specialist subagent roles for building and improving games.
 Entry point: [`skills/gamedev/SKILL.md`](skills/gamedev/SKILL.md).
 
 ## How it works
@@ -15,10 +15,29 @@ and visual weight. More satisfying construction connects payment, placement, com
 and the next choice. When a game feels boring, examine whether its existing choices change
 the next decision before adding systems.
 
-[Gameplay exercises](skills/gamedev/references/gameplay.md) turn these decisions into small
-experiments covering loops, movement, action timing, cameras, economies, encounters, and
-stability under load. Read the [Unity notes](skills/gamedev/references/unity.md) only for Unity work.
-The skill is self-contained and works offline. Other engines use the project's existing tools.
+## Four specialists
+
+| Area | Subagent task label | Responsibility |
+| --- | --- | --- |
+| [3D & Rendering](skills/gamedev/references/3d-rendering.md) | `gamedev-3d-rendering` | Geometry, spaces, materials, lighting, projection, composition, and readability. |
+| [Game Feel](skills/gamedev/references/game-feel.md) | `gamedev-game-feel` | Input response, movement, action rhythm, camera motion, and audiovisual feedback. |
+| [Systems](skills/gamedev/references/systems.md) | `gamedev-systems` | Playable loops, authoritative rules, economy, progression, AI, and persistence. |
+| [Performance](skills/gamedev/references/performance.md) | `gamedev-performance` | Frame pacing, CPU/GPU bottlenecks, allocations, memory, and streaming. |
+
+The main skill coordinates the work. It selects relevant specialists, passes each a bounded
+assignment and its role brief, waits for results, and integrates one coherent change.
+Full game audits use all four; focused tasks use only the relevant roles. Independent work
+runs in parallel within the host's limits. Shared files and the game Editor have one owner.
+
+These labels name delegated tasks. The skill uses the host's available general-purpose
+subagents without requiring custom agent registration, model overrides, or extra dependencies.
+[Codex supports delegation through skill instructions](https://learn.chatgpt.com/docs/agent-configuration/subagents);
+[Claude Code provides an Agent tool and general-purpose workers](https://code.claude.com/docs/en/sub-agents).
+If delegation is unavailable, the same briefs run sequentially in the main agent, which reports that limitation.
+
+Each brief contains a concrete experiment and an evidence-based return contract.
+Read the [Unity notes](skills/gamedev/references/unity.md) only for Unity work.
+The guidance is self-contained and works offline; execution uses the project's existing tools.
 
 ## Installation
 
@@ -40,9 +59,10 @@ not appear. The layout follows the documented skill formats for
 
 ```text
 $gamedev Make movement feel heavy but responsive; keep the existing controller and improve stopping and direction changes.
-/gamedev Construction feels unsatisfying; inspect payment, placement, feedback, and the next choice, then implement one small improvement.
-$gamedev Complete this prototype's first playable loop with an action, a meaningful result, and a way to try again.
-/gamedev Choices in my city builder feel too similar; propose one design experiment using existing systems without changing files.
+/gamedev Use all four specialists to audit this game without editing files; combine their findings by player impact and evidence.
+$gamedev Use 3D & Rendering to investigate selection-marker drift; preserve the camera controller and gameplay rules.
+/gamedev Use Systems and Game Feel to improve construction feedback; give shared files one owner and preserve economy rules.
+$gamedev Use Performance to investigate this encounter hitch; measure the bottleneck before choosing an optimization.
 ```
 
 ## Evaluation

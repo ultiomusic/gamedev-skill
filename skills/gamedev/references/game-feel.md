@@ -23,6 +23,24 @@ Follow the final simulation/interpolated pose through the existing camera owner.
 
 Repeated or interrupted effects need an overlap policy and a known resting state. Cancellation must not steal another action's callback, retain an intermediate pose as home, or restore another owner's camera/time state. End hit-stop using a clock unaffected by the freeze; distinguish local feedback time from global gameplay time.
 
+## Starting values and traps
+
+Treat these as hypotheses to test in this game at its frame rates and devices, not settings to transplant; each row names the first mistake to rule out before tuning.
+
+| Concept | Start here | Trap to check |
+|---|---|---|
+| Delta time | Scale each rate and timer by dt once; `dt = min(frameSeconds, 0.05)`; smoothing `blend = 1 - exp(-k*dt)` | dt applied twice (motion scales with dt²) or a fixed lerp factor; one dt per rate, blend from dt |
+| Fixed timestep bridge | Latch press/release edges until a tick consumes them; physics rates use the fixed step; render interpolates. Accumulator: see Systems | Edges read per render frame, so a press is lost or doubled when a frame runs zero or two ticks; consume once per tick |
+| Acceleration and friction | `v = moveTowards(v, input*maxSpeed, rate*dt)`; max in 0.1 to 0.2 s, stop in about 0.1 s; double braking on reversal; half rates airborne | Stopping left to physical friction or per-frame units; keep braking a per-second design value |
+| Coyote time | 0.1 to 0.15 s; refill while grounded, count down airborne | Grace not zeroed on jump, or refilled from stale grounded state on the takeoff frame; consume on jump, update grounded first |
+| Input buffering | About 0.1 s; fire on the first legal frame | Buffer not consumed once (acts as a held button) or window too long; clear on fire, keep it short |
+| Easing | `t = clamp(elapsed/duration, 0, 1)`; `easeOutCubic = 1 - (1-t)^3`; UI tweens about 0.3 s | Start overwritten every frame so the curve compounds; overshooting curve on bounded values (alpha, health); capture start once |
+| Camera deadzone | Box about a quarter of screen width; move the target by the excess only; clamp to level bounds | Smoothing without a separate target jitters at the box edge; deadzone the target, then smooth toward it |
+| Screen shake | Trauma 0 to 1, hits add 0.3 to 0.6, decay about 1/s; offset = maxOffset * trauma² * smooth noise | Shake accumulated into the base pose, or no reduced-motion setting; offset a stable pose, add a strength slider |
+| Squash and stretch | Stretch about 1.3 along velocity, squash about 0.7 on landing, recover in about 0.15 s; inverse on the other axis; pivot at feet | Collision tied to the squashed visual; keep the collider independent |
+| Hit stop | 50 to 100 ms scaled by damage, on an unscaled clock; keep reading input | Global time scale freezes the timer meant to end it; a persistent overlap re-extends it; freeze fighters only, once per hit |
+| Invincibility frames | 0.5 to 1 s after a hit; blink about 10 Hz | Blinking without gating damage; undefined bypass types (pits, instakill); per-target cooldown confused with per-attack hit list |
+
 ## Exercise: clarify recovery without erasing weight
 
 Use an existing action whose recovery presses feel unreliable. Record input, acceptance/rejection, commit, and readiness times before choosing a fix. Compare explicit rejection/readiness feedback with one bounded accepted queue near readiness only if buffering fits the intended commitment. Derive the candidate window from the observed action; preserve its commit and recovery timings.

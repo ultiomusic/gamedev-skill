@@ -17,6 +17,21 @@ Trace **source asset → local pose → world pose → camera projection → mat
 
 Keep render-only motion separate from collision, selection rules, and saved transforms. If a visual correction reveals a gameplay disagreement, report the boundary to Systems. If it adds significant passes, transparent coverage, lights, or memory, give Performance the exact change to measure; do not infer frame time from draw-call count.
 
+## Starting values and traps
+
+Treat these as hypotheses to test in this game's pipeline and viewport, not settings to copy across. Each row names the first mistake to rule out before adding geometry, lights, or passes.
+
+| Concept | Start here | Trap to check |
+| --- | --- | --- |
+| Raycasting | Normalized direction, finite max distance, mask excluding the caster; use the closest hit's point and normal. | Ray hits the shooter or runs unbounded: mask the caster, set a max distance. |
+| Normals | Walkable if `dot(n, up) >= cos(maxSlope)`, about 0.7 for 45 degrees; bounce `v - 2*dot(v,n)*n`; inverse-transpose under nonuniform scale, then renormalize. | A position used as a normal, or the model matrix applied to normals: use the surface normal and the normal matrix. |
+| Quaternions | `slerp(a, b, t)` with `t` clamped to 0..1; negate one endpoint when `dot(a,b) < 0`; renormalize after repeated multiplies. | Multiply order assumed commutative, or components edited as angles: choose the order deliberately, use axis-angle or engine helpers. |
+| Billboarding | Labels and bars take the full camera rotation; upright sprites take yaw only (zero the to-camera vector's y, normalize). | Camera rotation copied into a child's local transform: set world rotation or cancel the parent's. |
+| Z-fighting | Near plane about 0.1, not 0.01; far plane no farther than needed; decals lifted about 1 cm along the normal, or polygon offset factor -1, units -4. | Coplanar visible surfaces; offsets so large decals float; only head-on views tested: also check grazing angles. |
+| Level of detail | About 100/30/10 percent of triangles; switch on projected size with about 10 percent hysteresis. | Hidden LODs still animating, or silhouette pop: pause hidden updates, keep silhouettes and shadow LODs close, add hysteresis. |
+| Frustum culling | Planes from `projection * view`; test conservative bounds; skip draw and updates when fully outside. | Culling by origin point only, or bounds stale under animation: cull by bounds covering the deformed extent. |
+| Fragment shader | Per-pixel cost = covered pixels x layers; count texture samples, transparency, and overdraw first. | A cheap shader drawn full-screen or in many layers: measure coverage before adding math. |
+
 ## Exercise: make a selected target readable
 
 Use a short existing interaction: select a moving or animated target, bring it near an occluder or screen edge, then zoom out to the smallest supported interaction scale. Record whether the target, its marker, and the next useful action remain identifiable. Include the normal UI and intended aspect ratio.

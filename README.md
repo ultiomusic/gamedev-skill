@@ -39,6 +39,15 @@ Each brief contains a concrete experiment and an evidence-based return contract.
 Read the [Unity notes](skills/gamedev/references/unity.md) only for Unity work.
 The guidance is self-contained and works offline; execution uses the project's existing tools.
 
+## Concept coverage
+
+Each brief now carries a `Starting values and traps` table with starting numbers, formulas,
+and the first mistake to check for 34 concepts, from coyote time and input buffering to
+z-fighting, object pooling, and frame budget; the [specialist table](skills/gamedev/SKILL.md#select-specialists)
+lists each brief's vocabulary. A request about a single concept takes a direct path: the main agent
+applies and checks that row without delegating. The values are starting hypotheses to test in
+the project at hand, not settings to copy.
+
 ## Installation
 
 Copy the **entire** `skills/gamedev` folder to the appropriate destination:
@@ -65,9 +74,17 @@ $gamedev Use 3D & Rendering to investigate selection-marker drift; preserve the 
 $gamedev Use Performance to investigate this encounter hitch; measure the bottleneck before choosing an optimization.
 ```
 
+## Tests
+
+`python tests/validate.py` runs the static checks: frontmatter, local links, size limits,
+and concept coverage. Each `tests/cases/*.md` file is a behavioral fixture with a hidden
+`*.rubric.md` beside it. A case runs by giving a fresh agent the skill plus the case, without
+the rubric, and grading its reply against the rubric. Results are recorded in
+[tests/README.md](tests/README.md).
+
 ## Evaluation
 
 The [evaluation record](tests/README.md) distinguishes execution from design assessment.
 Earlier WalkingCity tests exposed three behavioral bugs; no permanent game source changes
-or game repository commits were made. Claude Code runtime execution has not been tested
-in this environment; compatibility is based on the shared file format and portable instructions.
+or game repository commits were made. The concept-table revision was run inside Claude Code with Opus 5.5 subagents on five
+behavioral cases, with and without the skill; Codex execution of that revision is untested.

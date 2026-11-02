@@ -31,6 +31,22 @@ For attacks, choose hit queries or collision volumes for the actual reach and sp
 
 Use global routing for connectivity and local steering for neighbors/arrival. Respect body clearance, dynamic blockers, and unreachable goals. Scheduled decisions need a bounded stale interval and an urgent-event path; reducing update frequency must not silently alter fairness. Do not add combat or agents when the loop does not need them.
 
+## Starting values and traps
+
+Treat these values as hypotheses to test against this game's rules and content, not settings to transplant; each row names the first mistake to rule out before adding a framework.
+
+| Concept | Start here | Trap to check |
+| --- | --- | --- |
+| Fixed timestep | Step 1/60 s from an accumulator capped near 0.25 s; render lerp(prev, cur, acc/step). | Raw frame-time steps add energy on long frames; no catch-up cap spirals; a fixed step alone is not cross-machine determinism. |
+| Tunneling | Sweep last to next position, or substep so a step moves under half the object's size; CCD for fast bodies. | Higher render FPS changes nothing; physics samples at its own rate. Pick sweep, substeps, or CCD by speed and size. |
+| State machine | One active state; explicit (state, event) to next table; enter/update/exit; unknown events ignored. | Transitions hidden in boolean flags; movement x weapon in one machine explodes, so split or nest machines. |
+| Hitbox and hurtbox | Hitbox live only on active frames, tested against hurtboxes; each attack instance records targets hit, one hit per target per swing. | Hit set cleared every frame, so clear it per swing; sprite bounds as combat shapes; per-swing tracking tangled with the defender's i-frames. |
+| Object pooling | Preallocate the peak count; reset every field on acquire; warn on exhaustion; when full, reject, recycle oldest, or grow off the hot path. | Incomplete reset leaks timers, targets, or listeners; active pooled objects still cost update and draw. |
+| Particle system | budget += rate*dt, spawn while budget >= 1; vel += gravity*dt, pos += vel*dt; particles from a fixed pool. | Fixed spawns per frame tie density to frame rate; pooling does not fix overdraw, so cap live count and overlap. |
+| Pathfinding (A*) | f = g + h, admissible h: Manhattan for 4-way, octile for 8-way; binary-heap open set; no corner cutting. | Overestimating h loses the shortest path; h must match the movement set (not Manhattan with 8-way). |
+| Steering behaviors | steer = clamp(desired - velocity, maxForce), maxForce about 4x maxSpeed per second; arrive radius about 4 unit widths; separate within about 2. | No arrive slowdown, so agents overshoot and pile up; steering alone gets trapped by obstacles, so follow a routed path. |
+| Seeded noise | Seeded PRNG into coordinate-sampled noise; 3-5 octaves, frequency x2 and amplitude x0.5 each; seed stored in the save. | One extra call on a shared sequential stream shifts the world; an algorithm change between versions makes old saves differ, so version the generator. |
+
 ## Run a discriminating experiment
 
 For a delayed pickup, record available value, inventory, and capacity before collection. Fill storage while the pickup travels, then repeat with cancellation and target reuse. Verify that stored value plus any retained/returned remainder matches the rule, no action settles twice, and feedback reports the actual outcome. Reject a proposed fix if it merely hides the missing value or moves the failure to reload. Use the equivalent boundary for the assigned mechanic rather than adding a pickup system.

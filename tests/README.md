@@ -2,6 +2,42 @@
 
 The skill is evaluated by the decisions it produces for a game, not by concept coverage. These checks distinguish design reasoning, code evidence, engine execution and subjective play. Earlier results below retain their original scope; they are not new runs of the four-specialist revision.
 
+## Claude Code behavioral evaluation (2026-11-02, concept-table revision)
+
+This revision added a `Starting values and traps` table to each specialist brief (34 concepts), a direct
+path for single-concept requests, `tests/validate.py`, and five behavioral cases with hidden rubrics in
+[tests/cases](cases/). It was evaluated inside a real Claude Code session: each run was a fresh
+general-purpose `Agent` subagent (Opus 5.5) that received the case file as the user's request and, for
+the skill conditions, the skill's `SKILL.md` path to follow as written. Runners could delegate with the
+`Agent` tool; no game project, engine, renderer or profiler was available, so every reply is reasoning
+over the fixture. Three conditions per case: no skill, the previous skill (`a42f8c4`), and this revision.
+The 15 replies were anonymized (A/B/C per case) and scored by five separate blind grader agents against
+the rubric (7 items, 0 to 2 each, must-not violations subtract 1; pass is 10 or more with no violation).
+
+| Case | No skill | Previous skill | This revision | Path taken by this revision |
+| --- | ---: | ---: | ---: | --- |
+| coyote-jump | 10 | 12 | 13 | direct (Game Feel brief, no subagents) |
+| frame-rate-speed | 10, FAIL (violation) | 14 | 14 | Game Feel lead + Systems, two subagents |
+| bullet-pool | 12 | 14 | 14 | Systems lead + Performance, two subagents |
+| marker-and-flicker | 12 | 13 | 14 | direct (3D & Rendering brief, no subagents) |
+| hitch-encounter | 11 | 14 | 14 | briefs applied directly, no subagents |
+| **Total (max 70)** | **55** | **67** | **69** | |
+
+What the scores show: the skill, in both versions, adds most on the cases built around a known trap. The
+no-skill reply left `rb.velocity * fixedDeltaTime` in place as correct and never varied the physics step;
+on the ledge-jump case it still queued a press it had just rejected. This revision never scored below the
+previous one and took the direct path on the two single-domain cases, which the previous skill handled
+by dispatching one specialist. The remaining lost point (coyote-jump item 5) is a reply that named the
+usual 0.1 to 0.15 s window but declined to propose a value to test, which matches the brief's instruction
+to treat starting values as hypotheses.
+
+Limits: 15 replies and 5 cases, one run per condition, so single-point differences are within noise;
+the graders are language models reading text, not engines; the fixtures were written by the same
+session that wrote the tables, although the editor agents never saw them. Graders also noted technical
+errors the rubrics do not catch (for example a z-fighting check with a static camera, and a stale-
+generation guard that cannot trip); those are in the per-case grade files. Replies and grades are under
+[results/2026-11-02](results/2026-11-02/). Nothing was built, rendered, profiled or playtested.
+
 ## Current package and host
 
 - Skill Creator `quick_validate.py` passed in Python UTF-8 mode (`python -X utf8`); the system-default Windows decoder cannot read some typographic punctuation.

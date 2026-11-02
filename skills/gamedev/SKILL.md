@@ -1,6 +1,6 @@
 ---
 name: gamedev
-description: Design, build, tune, and repair games through focused 3D/rendering, game-feel, systems, and performance specialists; use for playable mechanics, visual clarity, reliable rules, or games that work but feel wrong.
+description: Design, build, tune, and repair games through focused 3D/rendering, game-feel, systems, and performance specialists; use for playable mechanics, visual clarity, reliable rules, or games that work but feel wrong. Also for single concepts such as coyote time, input buffering, delta time, object pooling, z-fighting, or frame budget.
 ---
 
 # Coordinate a game that keeps its promise
@@ -17,14 +17,18 @@ Inspect existing instructions and edits, the actual engine/version, entry scene,
 
 Use the matching brief as a subagent assignment. Load only the relevant briefs; these are working roles, not four mandatory checklists.
 
-| Specialist | Delegate when the task concerns | Owns |
-| --- | --- | --- |
-| [3D & Rendering](references/3d-rendering.md) (`gamedev-3d-rendering`) | Geometry, spaces, materials, lighting, projection, camera composition, visual readability. | The image and its relationship to the world. |
-| [Game Feel](references/game-feel.md) (`gamedev-game-feel`) | Movement response, action rhythm, camera motion, input forgiveness, audiovisual feedback. | Perceived response and event timing. |
-| [Systems](references/systems.md) (`gamedev-systems`) | Playable loops, rules, economy, progression, AI, delayed actions, persistence. | Authoritative state and meaningful consequences. |
-| [Performance](references/performance.md) (`gamedev-performance`) | Hitches, frame pacing, CPU/GPU cost, allocations, memory, streaming. | Measured cost without broken gameplay or visuals. |
+| Specialist | Delegate when the task concerns | Owns | Concept vocabulary |
+| --- | --- | --- | --- |
+| [3D & Rendering](references/3d-rendering.md) (`gamedev-3d-rendering`) | Geometry, spaces, materials, lighting, projection, camera composition, visual readability. | The image and its relationship to the world. | raycasting, normals, level of detail, frustum culling, fragment shader, billboarding, quaternions, z-fighting |
+| [Game Feel](references/game-feel.md) (`gamedev-game-feel`) | Movement response, action rhythm, camera motion, input forgiveness, audiovisual feedback. | Perceived response and event timing. | delta time, coyote time, easing, screen shake, squash and stretch, camera deadzone, input buffering, acceleration and friction, hit stop, invincibility frames |
+| [Systems](references/systems.md) (`gamedev-systems`) | Playable loops, rules, economy, progression, AI, delayed actions, persistence. | Authoritative state and meaningful consequences. | object pooling, state machine, hitbox and hurtbox, pathfinding, particle system, fixed timestep, steering behaviors, tunneling, seeded noise |
+| [Performance](references/performance.md) (`gamedev-performance`) | Hitches, frame pacing, CPU/GPU cost, allocations, memory, streaming. | Measured cost without broken gameplay or visuals. | frame budget, draw calls, spatial partitioning, overdraw, time slicing, texture atlas, chunk streaming |
 
-Choose the earliest mismatch in **intent → input → eligibility → committed state → feedback → next decision**. An attractive effect cannot repair a lost reward. For mixed work, name a lead and supporting specialists; for a requested full game audit, dispatch all four. A narrow task needs only its relevant specialist, with a handoff if evidence crosses domains.
+Choose the earliest mismatch in **intent → input → eligibility → committed state → feedback → next decision**. An attractive effect cannot repair a lost reward. For mixed work, name a lead and supporting specialists; for a requested full game audit, dispatch all four. A narrow task inside one domain takes the direct path below; delegate a single specialist only when it needs its own investigation, with a handoff if evidence crosses domains.
+
+## Take the direct path for one concept
+
+When the request names one concept or a small tuning fix inside one owner's domain, such as coyote time or z-fighting, do not dispatch specialists. Read that specialist's brief, start from its `Starting values and traps` row, apply it in the project's existing owner, run the row's check at the relevant render/physics rates or on the representative build, and report what the check showed. Starting values are hypotheses to test in this project, not facts to cite. Escalate to delegation only when the evidence crosses domains or the user asks for an audit. Skipping delegation on a narrow task is the intended path, not a limitation to disclose; the disclosure below applies only when delegation was needed but unavailable.
 
 ## Run the subagents
 

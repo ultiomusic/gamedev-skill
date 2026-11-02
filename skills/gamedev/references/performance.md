@@ -25,6 +25,20 @@ Stay within the coordinator's question, execution permissions, and assigned writ
 
 Use the project's existing facilities before adding a scheduler, pool, streaming system or engine-wide rewrite. Change one cost mechanism per comparison unless their interaction is the explicit hypothesis. Protect input sampling, contact timing and critical feedback before sacrificing them to meet a budget.
 
+## Starting values and traps
+
+Treat these values as hypotheses to test on the representative build and device, not settings to copy across projects; rule out each row's trap before optimizing.
+
+| Concept | Start here | Trap to check |
+| --- | --- | --- |
+| Frame budget | `1000 / targetFPS` ms (16.67 ms at 60). Time input, update, physics and render separately; fix the largest. Read GPU timings and high-percentile frames, not averages. | CPU submit time read as GPU time, or CPU and GPU durations summed. Use GPU markers on the same scene. |
+| Draw calls | Instance repeated mesh + material with a per-instance transform buffer; merge static meshes that share a material. Material changes split batches. | Fewer calls assumed to mean a shorter frame; triangles, shading and overdraw are unchanged. Profile the real bottleneck. |
+| Overdraw | Overdraw = layers shading the same pixel. Cap overlapping transparent particles, trim quads tight, render heavy effects at half resolution and composite. | Alpha-zero pixels assumed free; shading and blending still cover the whole quad. Shrink geometry and layers. |
+| Texture atlas | One atlas such as 2048 x 2048, about 2 px padding, borders extruded for the mip levels used; `uv = pixelRect / atlasSize`. | Bleeding at sprite edges from filtering and mipmaps. Extrude borders and widen padding; 2 px is not universal. |
+| Spatial partitioning | Uniform grid, cell about 2x the largest object, `cell = floor(position / cellSize)`; test own cell plus 8 neighbours. Without it pairs grow n squared: 48 objects = 1,128 checks, 1,000 = about 500,000. | Grid treated as the collision test; it only yields candidates, so run the exact check. Insert spanning objects in every overlapped cell and deduplicate pairs. |
+| Time slicing | 4 to 8 buckets by index, `bucket = frame mod count`; one bucket of decisions per frame, movement and animation every frame. | Added response delay (up to `count` frames) not measured; urgent work on the sliced schedule; all expensive agents in one bucket. Give urgent work its own budget; spread cost evenly. |
+| Chunk streaming | Load radius below unload radius, such as 2 and 3 chunks of 32 x 32 tiles; build data async, pool chunk objects, budget activation per frame. | One radius thrashing on a border; chunk unloaded with pending saves or live neighbour references; activation spike on the main thread. Check before unloading; cap activations per frame. |
+
 ## Falsifiable experiment
 
 For a hitch during a repeated encounter, capture the same encounter before and after one evidence-led change, on the same build configuration and device. Include first use, sustained repetition, and return after cleanup. Compare the relevant CPU/GPU marker, frame-time tail and peak/retained memory against a predeclared tolerance; inspect action outcomes and required cues too. Repeat enough to distinguish the change from capture noise. Reject the change if the suspected cost does not improve, the hitch moves elsewhere, memory exceeds the agreed budget, or response/readability regresses. No capture means a proposed experiment, not a performance win.

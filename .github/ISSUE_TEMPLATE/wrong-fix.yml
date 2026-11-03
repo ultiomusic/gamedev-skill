@@ -1,0 +1,32 @@
+name: Skill gave a wrong fix
+description: The skill misdiagnosed a problem, made a bad change, or missed something.
+labels: [bug]
+body:
+  - type: input
+    id: engine
+    attributes:
+      label: Engine and version
+      placeholder: Unity 6000.0.23, Godot 4.3, Three.js r170...
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent
+      placeholder: Claude Code 2.x, Codex...
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: What you asked
+      description: The exact request, e.g. `/gamedev the jump feels floaty`.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What it changed and what happened
+      description: The change it made, what the game did afterwards, and what you expected. A clip or diff helps.
+    validations:
+      required: true

@@ -7,6 +7,7 @@ All notable changes to this skill are listed here. Versions follow the git tags.
 - Add an MIT license, a contributing guide, issue templates and this changelog.
 - Restore `tests/validate.py` for the flat layout and run it in CI.
 - Add Bevy engine notes: fixed-clock input, system run conditions and release profiling.
+- Add GameMaker engine notes: where the running game is defined, per-step timing and event order.
 
 ## 1.0.0 - 2026-11-02
 

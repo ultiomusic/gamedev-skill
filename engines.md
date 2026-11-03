@@ -49,6 +49,12 @@ Do not add `-quit` to a Test Framework run: the runner owns completion. Check XM
 - In `FixedUpdate`, `Res<Time>` is the fixed clock (64 Hz by default), which ticks zero or several times per frame: `just_pressed` read there is lost or doubled. Latch presses in a resource outside the fixed schedule and clear them when consumed. Transforms moved there are not interpolated by default.
 - Profile `--release` builds; debug builds are many times slower unless `[profile.dev.package."*"]` sets `opt-level = 3`.
 
+## GameMaker
+
+- Truth lives in the `.yyp` (the first room in the room order starts the game), `objects/*/` event files (`Step_1.gml` Begin Step, `Step_0.gml` Step, `Step_2.gml` End Step) and room instances, whose Variable Definitions and creation code override the object.
+- Logic runs once per game frame (`game_get_speed(gamespeed_fps)`): speeds and alarms count steps, and a slow frame slows the whole game. `delta_time` is in microseconds; don't mix it with built-in `speed` or `gravity`, which move per step.
+- Each frame runs Begin Step, Step, built-in motion, Collision, End Step, then Draw. Instance order within one event is not guaranteed.
+
 ## Web (Canvas, Three.js, Phaser, PixiJS)
 
 - Truth lives in `package.json` and its lockfile (engine version), the bundler config, and the HTML entry that actually loads. Check the production build, not only the dev server.

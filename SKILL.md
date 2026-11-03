@@ -1,6 +1,6 @@
 ---
 name: gamedev
-description: Design, build, tune, and repair games through focused game-feel, 3D/rendering, systems, and performance specialists. Use for playable mechanics, visual clarity, reliable rules, frame-rate problems, or games that work but feel wrong, in Unity, Godot, Unreal, Bevy, or web projects; also for single concepts such as coyote time, jump feel, input buffering, delta time, object pooling, save data, z-fighting, or frame budget.
+description: Design, build, tune, and repair games through focused game-feel, 3D/rendering, systems, and performance specialists. Use for playable mechanics, visual clarity, reliable rules, frame-rate problems, or games that work but feel wrong, in Unity, Godot, Unreal, Bevy, GameMaker, or web projects; also for single concepts such as coyote time, jump feel, input buffering, delta time, object pooling, save data, z-fighting, or frame budget.
 ---
 
 # Coordinate a game that keeps its promise

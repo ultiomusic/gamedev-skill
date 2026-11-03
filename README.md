@@ -6,9 +6,9 @@
   <a href="https://github.com/ultiomusic/gamedev-skill/actions/workflows/validate.yml"><img src="https://github.com/ultiomusic/gamedev-skill/actions/workflows/validate.yml/badge.svg" alt="validate"></a>
 </p>
 
-Tell it what feels wrong in your game. It finds the cause, makes the smallest change in your own code, and tells you exactly what it checked.
+For game developers using Claude Code or Codex: describe what feels wrong in your game, like a floaty jump or a stutter, and it finds the cause and fixes it in your own code.
 
-## Install
+<!-- DEMO GIF (5-10 s): record `/gamedev the jump feels floaty` from the request to the fixed jump, save it as images/demo.gif, and swap this comment for that image. -->
 
 ```bash
 git clone https://github.com/ultiomusic/gamedev-skill.git ~/.claude/skills/gamedev

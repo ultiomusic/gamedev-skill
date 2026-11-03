@@ -3,6 +3,11 @@
 </p>
 
 <p align="center">
+  <img src="images/demo.gif" width="880" alt="Same input replayed in a small platformer: jump pressed 67 ms after leaving the ledge. Before, the player falls into the gap; after /gamedev added 0.1 s of coyote time, the jump clears it.">
+  <br><sub>A real run: <code>/gamedev</code> added 0.1 s of coyote time to a small platformer, then the same input was replayed through both versions.</sub>
+</p>
+
+<p align="center">
   <a href="https://github.com/ultiomusic/gamedev-skill/actions/workflows/validate.yml"><img src="https://github.com/ultiomusic/gamedev-skill/actions/workflows/validate.yml/badge.svg" alt="validate"></a>
 </p>
 

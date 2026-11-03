@@ -1,0 +1,23 @@
+name: New concept or engine
+description: Suggest a concept, engine or genre the skill should know.
+labels: [enhancement]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Concept or engine
+      placeholder: hit-stop for projectiles, Bevy, GameMaker...
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What goes wrong without it
+      description: The symptom a player or developer would notice.
+    validations:
+      required: true
+  - type: textarea
+    id: values
+    attributes:
+      label: Starting value, trap and check (optional)
+      description: If you know them, a value to start from, the first trap, and how to confirm the fix.

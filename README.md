@@ -2,6 +2,10 @@
   <img src="images/hero.svg" width="880" alt="/gamedev: a skill for Claude Code and Codex that builds, tunes and fixes games">
 </p>
 
+<p align="center">
+  <a href="https://github.com/ultiomusic/gamedev-skill/actions/workflows/validate.yml"><img src="https://github.com/ultiomusic/gamedev-skill/actions/workflows/validate.yml/badge.svg" alt="validate"></a>
+</p>
+
 Tell it what feels wrong in your game. It finds the cause, makes the smallest change in your own code, and tells you exactly what it checked.
 
 ## Install
@@ -37,3 +41,7 @@ Ask in plain words, or call it directly (`$gamedev` in Codex):
 </p>
 
 Engine notes for Unity, Godot, Unreal and the web load only when your project uses that engine.
+
+## Contributing
+
+New concepts, engine notes and bug reports are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Released under the [MIT License](LICENSE).

@@ -42,6 +42,13 @@ Do not add `-quit` to a Test Framework run: the runner owns completion. Check XM
 - Physics steps once per frame with the frame delta (capped by Max Physics Delta Time) unless substepping or async physics is on, so tunneling gets worse at low frame rates. Enable CCD on fast primitives or substepping, and test at the lowest supported frame rate.
 - Read `stat unit` as overlapping threads (Game, Draw, GPU): frame time follows the slowest, not their sum. Profile a packaged Development or Test build with Unreal Insights; Play In Editor includes editor cost.
 
+## Bevy
+
+- Truth lives in `Cargo.toml` (Bevy version, features, profiles) and the `App::new()` chain with the plugins it adds. APIs change every minor release (`delta_seconds()` became `delta_secs()` in 0.15); match the installed version.
+- A system runs only if its schedule, `run_if` conditions and current state allow it. Check those before trusting code that looks live.
+- In `FixedUpdate`, `Res<Time>` is the fixed clock (64 Hz by default), which ticks zero or several times per frame: `just_pressed` read there is lost or doubled. Latch presses in a resource outside the fixed schedule and clear them when consumed. Transforms moved there are not interpolated by default.
+- Profile `--release` builds; debug builds are many times slower unless `[profile.dev.package."*"]` sets `opt-level = 3`.
+
 ## Web (Canvas, Three.js, Phaser, PixiJS)
 
 - Truth lives in `package.json` and its lockfile (engine version), the bundler config, and the HTML entry that actually loads. Check the production build, not only the dev server.

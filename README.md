@@ -40,7 +40,7 @@ Ask in plain words, or call it directly (`$gamedev` in Codex):
   <img src="images/performance.svg" width="880" alt="Performance: frames against the 16.7 ms budget, one render spike crosses it and stutters">
 </p>
 
-Engine notes for Unity, Godot, Unreal and the web load only when your project uses that engine.
+Engine notes for Unity, Godot, Unreal, Bevy and the web load only when your project uses that engine.
 
 ## Contributing
 
